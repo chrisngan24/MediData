@@ -2,15 +2,21 @@ var dbConfig = require('./dbConfig');
 var dbPush = require('./dbPush');
 
 
-exports.pushVillageWithPhoneNumber = function(village, phoneNumber, callback){
-	dbConfig.connectVillage(function(villageCollection){
-		village['phoneNumber'] = phoneNumber;
-		dbConfig.connectPhoneNumbers(function(phoneNumberColl){		
-			villageCollection.insert(village, callback);
-			
-		})
-	});
+exports.pushPhoneNumberWithVillage = function(village, phoneNumber, callback){
+	village['phoneNumber'] = phoneNumber;
+	phoneNumber['_villageId'] = phoneNumber.
+		
+	dbConfig.connectPhoneNumbers(function(phoneNumberColl){		
+		phoneNumberColl.insert()
+	})
+	
 
+}
+
+exports.pushVillage = function(village, callback){
+	dbConfig.connectVillage(function(villageColl){
+		villageColl.insert(village, callback);
+	});
 }
 
 exports.pushPhoneNumber = function(phoneNumber, callback){

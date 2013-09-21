@@ -1,6 +1,7 @@
 var dbConfig = require('./dbConfig');
 var dbPush = require('./dbPush');
 var dbGet = require('./dbGet');
+var dbUpdate = require('./dbUpdate');
 var util = require('./util');
 
 exports.pushTextMsg = function(textMessage, callback){
@@ -12,19 +13,18 @@ exports.pushTextMsg = function(textMessage, callback){
 		if(village!=null){
 
 			var diseases = util.parseTextMsg(message, village);
-			console.log(diseases);		
+			
 			for (var i = 0; i < diseases.length; i++){
 				dbPush.pushDisease(diseases[i], function(){
 					if(i == diseases.length){
-						callback();
+						dbUpdate.updateVillage(village, callback);
+						// callback();
 					}
 				})
 			}
 		}
 
-		// dbPush.pushDisease(diseases, 0, function(){
-		// 	callback();
-		// });		
+		
 	})
 
 }

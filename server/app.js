@@ -142,8 +142,8 @@ var response = {
             handle.registerNumber(req,{
                 send : function(){
                     
-                    // if (i == phoneNumbers.length)
-                    //     generateTextMessages();    
+                    if (i == phoneNumbers.length)
+                        generateTextMessages();    
                 }
             });                            
         }
@@ -167,7 +167,7 @@ var generateTextMessages = function(){
     var generateTextMsg = function(x) {
 
         textcode = DISEASE_TYPES[(x + 4) % 3] + ':' + x + ',' + DISEASE_TYPES[(x + 2) % 3]  + ':' + (x+2);
-        console.log(textcode);
+        // console.log(textcode);
 
         var textMsg = {
             'message' : textcode,

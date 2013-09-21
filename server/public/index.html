@@ -14,12 +14,17 @@
 					vs = data;
 
 					for (var i in data) {
-						el = $("<div>" + data[i].name + "</div>")
-						
-						for (var k in vs[0].diseases) { 
-							el.append('<div>' + k + ' ' + vs[0].diseases[k] + '</div>');
-						}
+						el = $("<div class='village_block'>" +  + "</div>")
+						village_title = "<div class='village_title'>" + data[i].name + "</div>"
+						el.append(village_title)
 
+						disease_table = $("<table class='disease_table'><tr><th>Disease</th><th># of People Infected</th></tr></table>")
+
+
+						for (var k in vs[i].diseases) { 
+							disease_table.append('<tr><td>' + k + '</td>' + '<td>' + vs[i].diseases[k] + '</td></tr>')
+						}
+						el.append(disease_table)
 						$("#main").append(el)
 
 					}		
@@ -33,9 +38,13 @@
 	<body>
 		<div id="main">
 			<h1 id="title">Disease Information</h1>
+			<div id="filters">
+				<select>
+					<option>Malaria</option><option>HIV</option><option>Small Pox</option>
+				</select>
+
+			</div>
 		</div>
 	</body>
 
 </html>
-
-

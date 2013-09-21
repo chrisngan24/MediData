@@ -32,6 +32,9 @@ app.get('/', function(req, res){
 app.get('/admin', function(req, res){
     res.redirect('/admin.html');
 });
+app.get('/detailed/:villageId', function(req, res){
+    res.redirect('/detailed.html#' + req.param.villageId);
+});
 
 // app.post()
 // app.push()

@@ -1,9 +1,9 @@
 exports.initializeDiseases = function(){
 		
-}
+};
 
 
-exports.parseDiseases = function(textmessage){
+exports.parseTextMsg = function(textmessage){
 
 	var diseaseObject = {};
 	var diseaseComponents;
@@ -12,14 +12,14 @@ exports.parseDiseases = function(textmessage){
 	for (var i = n.length - 1; i >= 0; i--) {
 		diseaseComponents = n[i].split(":");
 		diseaseObject[diseaseComponents[0]] = diseaseComponents[1];
-	};
+	}
 
 	return diseaseObject;
 
-}
+};
 
 
 var makeDisease = function(name, description){
 
-}
+};
 

@@ -4,11 +4,11 @@ var dbPush = require('./dbPush');
 
 exports.pushPhoneNumberWithVillage = function(village, phoneNumber, callback){
 	village['phoneNumber'] = phoneNumber;
-	phoneNumber['_villageId'] = phoneNumber.
+	//phoneNumber['_villageId'] = phoneNumber._villageId;
 		
 	dbConfig.connectPhoneNumbers(function(phoneNumberColl){		
-		phoneNumberColl.insert()
-	})
+		phoneNumberColl.insert();
+	});
 	
 
 }

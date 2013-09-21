@@ -5,12 +5,20 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 
-		
-
 	</head>
 
 	<body>
-		<canvas id="myChart" width="400" height="400"></canvas>
+		<canvas id="myChart" width="1000" height="600"></canvas>
+		
+		<div>
+			<form class="GraphingSelection">
+		            <select>
+		              <option>Malaria</option>
+		              <option>HIV</option>
+		              <option>Smallpox</option>
+		            </select>
+		    </form>
+		</div>
 
 		<!--script>
 			//Get context with jQuery - using jQuery's .get() method.
@@ -43,61 +51,72 @@
 		</script-->
 
 		<script>
-			
+
+			var plotData = {
+				dates : [],
+				spData : [],
+				mData : [],
+				hData : []
+			}
+
 			vs = []
 
 			$.ajax({
 				type: 'GET',
-				url: 	'http://localhost:3000/api/villages',
+				url: 	'http://localhost:3000/api/diseases',
 				success: function(data) {
 					vs = data;
 
-					console.log(data[i]);
-
-					for (var i in data) {
-						el = $("<div class='village_block'>" +  + "</div>")
-						village_title = "<div class='village_title'>" + data[i].name + "</div>"
-						el.append(village_title)
-
-						disease_table = $("<table class='disease_table'><tr><th>Disease</th><th># of People Infected</th></tr></table>")
-
-
-						for (var k in vs[i].diseases) { 
-							disease_table.append('<tr><td>' + k + '</td>' + '<td>' + vs[i].diseases[k] + '</td></tr>')
+					for (var i in vs) {
+						
+						var disease = vs[i].disease;
+						if (disease === "Malayria") {
+							plotData.mData.push(vs[i].count);
 						}
-						el.append(disease_table)
-						$("#main").append(el)
+						else if (disease === "HIV") {
+							plotData.hData.push(vs[i].count);
+						}
+						else if (disease === "Smallpox") {
+							plotData.spData.push(vs[i].count);
+							plotData.dates.push((new Date(vs[i].time)).getUTCMilliseconds().toString());
+							//plotData.dates.push(new Date(vs[i].time));
+						}
 
-					}		
+					}	
+					render();	
 				}
 			});
 
 			//Get context with jQuery - using jQuery's .get() method.
-			var ctx = $("#myChart").get(0).getContext("2d");
-			//This will get the first returned node in the jQuery collection.
-			var myNewChart = new Chart(ctx);
+			function render(){
+				var ctx = $("#myChart").get(0).getContext("2d");
+				//This will get the first returned node in the jQuery collection.
+				var myNewChart = new Chart(ctx);
 
-			var data = {
-				labels : ["January","February","March","April","May","June","July"],
-				datasets : [
-					{
-						fillColor : "rgba(220,220,220,0.5)",
-						strokeColor : "rgba(220,220,220,1)",
-						data : [65,59,90,81,56,55,40]
-					},
-					{
-						fillColor : "rgba(151,187,205,0.5)",
-						strokeColor : "rgba(151,187,205,1)",
-						data : [28,48,40,19,96,27,100]
-					}
-				]
+				var data = {
+					labels : plotData.dates,
+					datasets : [
+						{
+							fillColor : "rgba(250,100,0,0.5)",
+							strokeColor : "rgba(250,100,0,1)",
+							pointColor : "rgba(250,100,0,1)",
+							pointStrokeColor : "#fff",
+							data : plotData.spData
+						}
+					]
+				};
+
+				var lineChartOptions = {
+					scaleOverride : true,
+					scaleSteps : 20,
+					scaleStepWidth : 1,
+					scaleStartValue : 0
+				};
+
+				new Chart(ctx).Line(data, lineChartOptions);
+
+
 			}
-
-			var options = {
-				scaleShowLabels : true
-			}
-
-			new Chart(ctx).Bar(data,options);
 
 		</script>
 

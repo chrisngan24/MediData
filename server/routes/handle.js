@@ -3,7 +3,6 @@ var dbGet = require('./dbGet');
 var dbPush = require('./dbPush');
 
 
-
 exports.getVillages = function(req, res){
 	dbGet.getVillages(function(villages){
 		res.send(villages);
@@ -23,6 +22,7 @@ exports.getDiseases = function(req, res){
 }
 
 exports.pushVillage = function(req, res){
+	
 	dbPush.pushVillage(req.body.village, function(){
 		console.log('added village data');
 	});

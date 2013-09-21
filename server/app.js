@@ -53,7 +53,10 @@ app.listen(3000);
 var registerNumbers = function(){
     var phoneNumber = {
         'number' : '12247721893',
-        'administrator' : 'Clement Fung'
+        'administrator' : 'Clement Fung',
+        'village' : 'Village 1',
+        'latitude' : '1',
+        'longitude' : '1'
     }
 
     return phoneNumber;

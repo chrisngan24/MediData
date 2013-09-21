@@ -14,6 +14,16 @@ exports.getVillages = function(req, res){
 	dbGet.getVillages(function(villages){
 		res.send(villages);
 	})
-
 }
 
+exports.getPhoneNumbers = function(req, res){
+	dbGet.getPhoneNumbers(function(phoneNumbers){
+		res.send(phoneNumbers);
+	})
+}
+
+exports.getDiseases = function(req, res){
+	dbGet.getDiseases(function(diseases){
+		res.send(diseases);
+	})
+}

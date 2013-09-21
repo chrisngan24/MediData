@@ -14,7 +14,7 @@ exports.getVillages = function(callback){
 
 
 exports.getPhoneNumbers = function(callback){
-	dbConfig.connectPhoneNumbers(function(phoneNumbersColl){
+	dbConfig.connectPhoneNumber(function(phoneNumbersColl){
 		phoneNumbersColl.find({}, function(err, cursor){
 			cursor.toArray(function(err, array){
 				callback(array);
@@ -23,3 +23,12 @@ exports.getPhoneNumbers = function(callback){
 	});
 }
 
+exports.getDiseases = function(callback){
+	dbConfig.connectDisease(function(diseaseColl){
+		diseaseColl.find({}, function(err, cursor){
+			cursor.toArray(function(err, array){
+				callback(array);
+			})
+		})
+	});
+}

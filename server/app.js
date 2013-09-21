@@ -22,6 +22,8 @@ app.configure(function() {
 
 app.get('/api/hello', handle.hello);
 app.get('/api/villages', handle.getVillages);
+app.get('/api/diseases', handle.getDiseases);
+app.get('/api/phoneNumbers', handle.getPhoneNumbers);
 
 
 

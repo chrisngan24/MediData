@@ -2,13 +2,6 @@ var dbConfig = require('./dbConfig');
 var dbGet = require('./dbGet');
 var dbPush = require('./dbPush');
 
-var hello = {
-	data : 'clement is a sexy beast'
-}
-
-exports.hello = function(req, res){
-	res.send(req.toString());
-}
 
 
 exports.getVillages = function(req, res){
@@ -29,6 +22,11 @@ exports.getDiseases = function(req, res){
 	})
 }
 
+exports.pushVillage = function(req, res){
+	dbPush.pushVillage(req.body.village, function(){
+		console.log('added village data');
+	});
+}
 
 exports.registerNumber = function(req, res){
 	dbPush.pushPhoneNumber(req.body.phoneNumber, function(){

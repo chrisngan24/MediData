@@ -25,11 +25,17 @@ app.get('/', function(req, res){
     res.redirect('/index.html');
 });
 
+// app.post()
+// app.push()
+// app.delete();
+// 
+// 
+
+
 // The main caller to the api URL
 
-app.get('/api/hello', handle.hello);
-// app.get('/api/villages', handle.getVillages);
-app.get('/api/villages', function(req, res){
+app.get('/api/villages', handle.getVillages);
+/*app.get('/api/villages', function(req, res){
     villages = [{
             name:"First Village", "diseases": {"Malaria" : 10,"HIV" : 39,"Small Pox" : 2} 
         },                    
@@ -38,23 +44,17 @@ app.get('/api/villages', function(req, res){
         }
     ]
     res.send(villages);
-})
+})*/
 app.get('/api/diseases', handle.getDiseases);
 app.get('/api/phoneNumbers', handle.getPhoneNumbers);
+app.listen(3000);
 
 
-
-
-// app.post()
-// app.push()
-// app.delete();
-// 
-// 
 var registerNumbers = function(){
-	var phoneNumber = {
-		'number' : '9058871226',
+    var phoneNumber = {
+        'number' : '12247721893',
         'administrator' : 'Clement Fung'
-	}
+    }
 
     return phoneNumber;
 }
@@ -62,8 +62,8 @@ var registerNumbers = function(){
 var req = {};
 req.body = {};
 req.body.phoneNumber = registerNumbers();
-
 handle.registerNumber(req, function(){});
+
 // function test()
 // {
 //    console.log('hello');
@@ -75,14 +75,19 @@ handle.registerNumber(req, function(){});
 var generateTextMsg = function() {
     var textMsg = {
         'message' : 'Malaria:3,HIV:4',
-        'phoneNumber' : '9058871226'
+        'phoneNumber' : '12247721893'
     };
 
     return textMsg;
 }
 
 console.log("parsing text");
-var diseaseStats = util.parseTextMsg(generateTextMsg().message);
-console.log(diseaseStats);
+var textObject = generateTextMsg();
+var diseaseStats = util.parseTextMsg(textObject.message, textObject.phoneNumber);
+//handle.pushVillage(diseaseStats);
+//console.log(diseaseStats);
 
-app.listen(3000);
+
+
+req.body.village = diseaseStats;
+handle.pushVillage(req, function(){});

@@ -1,7 +1,6 @@
 var dbConfig = require('./dbConfig');
 var dbPush = require('./dbPush');
 
-
 exports.pushPhoneNumberWithVillage = function(village, phoneNumber, callback){
 	village['phoneNumber'] = phoneNumber;
 	//phoneNumber['_villageId'] = phoneNumber._villageId;
@@ -10,7 +9,6 @@ exports.pushPhoneNumberWithVillage = function(village, phoneNumber, callback){
 		phoneNumberColl.insert();
 	});
 	
-
 }
 
 exports.pushVillage = function(village, callback){

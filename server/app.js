@@ -81,6 +81,8 @@ var generateTextMsg = function() {
     return textMsg;
 }
 
-// var diseaseStats = util.parseTextMsg(generateTextMsg().message);
+console.log("parsing text");
+var diseaseStats = util.parseTextMsg(generateTextMsg().message);
+console.log(diseaseStats);
 
 app.listen(3000);

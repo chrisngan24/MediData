@@ -10,9 +10,39 @@ exports.pushTextMsg = function(textMessage, callback){
 	dbGet.getVillageByPhoneNumber(phoneNumber, function(village){
 		// console.log(village);
 		var diseases = util.parseTextMsg(message, village);
-		console.log(diseases);
+		console.log(diseases);		
+		for (var i = 0; i < diseases.length; i++){
+			dbPush.pushDisease(diseases[i], function(){
+				if(i == diseases.length){
+					callback();
+				}
+			})
+		}
+
+		// dbPush.pushDisease(diseases, 0, function(){
+		// 	callback();
+		// });		
 	})
 
+}
+
+/**
+ * Pushes array of diseases recursively until it is sent in time
+ * @param  {[type]}   diseases [description]
+ * @param  {[type]}   index    [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+exports.pushDiseaseArray = function(diseases, index, callback){
+	dbPush.pushDisease(diseases[index], function(){
+		console.log(index)
+		index++;
+		if(index >= diseases.length){
+			callback();
+		} else
+			dbPush.pushDiseaseArray(diseases, index, callback)
+
+	})
 }
 
 
@@ -26,8 +56,12 @@ exports.pushPhoneNumberWithVillage = function(village, phoneNumber, callback){
 	
 }
 
-
-
+ 
+exports.pushDisease = function(disease, callback){
+	dbConfig.connectDisease(function(diseaseColl){
+		diseaseColl.insert(disease, callback);
+	});
+};
 
 
 exports.pushVillage = function(village, callback){
@@ -42,11 +76,3 @@ exports.pushPhoneNumber = function(phoneNumber, callback){
 	});
 }
 
-exports.pushDiseaseWithVillage = function(disease, village, callback){
-	disease['_villageId'] = village._id;
-
-	dbConfig.connectDisease(function(diseaseColl){
-		diseaseColl.insert(disease, callback);
-	})
-
-}

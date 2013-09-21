@@ -5,6 +5,7 @@ var Server  = mongo.Server;
 var dbName = 'textPerVillage';
 var collPhoneNumber = 'phoneNumbers';
 var collVillage = 'village';
+var collDisease = 'disease';
 
 config ={
     "hostname":"localhost",
@@ -48,7 +49,7 @@ exports.connectVillage = function(callback){
 };
 
 exports.connectDisease = function(callback){
-	connectMongo(collVillage, callback);
+	connectMongo(collDisease, callback);
 };
 
 var connectMongo = function(collName, callback){

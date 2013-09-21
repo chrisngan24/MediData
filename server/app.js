@@ -126,19 +126,14 @@ var generateTextMessages = function(){
     var diseapseStats = [];
     var textObj;
     
-    // for (var i = 0; i < NUMBER_OF_PHONE_NUMBERS; i++) {
-        textObj = generateTextMsg(0);
+    for (var i = 0; i < NUMBER_OF_PHONE_NUMBERS; i++) {
+        textObj = generateTextMsg(i);
         var req = {
             body:{
                 textMessage : textObj
             }
         }
         handle.pushTextMsg(req);
-    // }
+    }
 
 }
-
-
-
-
-

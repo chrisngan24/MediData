@@ -16,7 +16,7 @@ exports.parseTextMsg = function(textmessage, village){
 		diseaseObject['_villageId'] = village._id;
 	}
 
-	return diseaseObject;
+	return diseaseArray;
 
 };
 

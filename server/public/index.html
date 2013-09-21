@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <head>
-<title>Twitter Bootstrap Tutorial - A responsive layout tutorial</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+<title>MediData</title>
+<script type="text/javascript" src="libs/jquery-latest.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="css/index.css">
 <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+
 <style type='text/css'>
 body 
 {
-background-color: #CCC;
+    background-color: #CCC;
+    background-image: url(../images/grey_wash_wall.png);
+    /*background-image: url(../images/grey_wash_wall.png);*/
+}
+
+.container {
+
 }
 
 .span4 {
@@ -28,6 +36,8 @@ background-color: #CCC;
   margin-left: 15%;
   margin-right: 15%;
 }
+
+
 </style>
 
   <script>
@@ -43,14 +53,14 @@ background-color: #CCC;
         appended = 0;
         curr_row = $("#first_row")
 
-        
+
 
         for (var i in data) {
-          v_block = $("<div class='span4'><h2>" + data[i].name + "</h2><h4>Admin:" + data[i].administrator + "</h4></div>")
+          v_block = $("<div class='span4'><h2><a href='http://localhost:3000/detailed/" + data[i]._id + "'>" + data[i].name + "</a></h2><h4>Admin: " + data[i].administrator + "</h4></div>")
           
           
           table = $("<table class='table'></table>")
-          table.append("<tr><th>Disease</th><th># People Infected</th></tr>")
+          table.append("<tr><th>Disease</th><th># People Affected</th></tr>")
 
           for (var k in vs[i].diseases) {
           	table.append('<tr><td>' + vs[i].diseases[k].disease + '</td><td>' + vs[i].diseases[k].count + '</td></tr>')
@@ -67,53 +77,73 @@ background-color: #CCC;
     
   </script>
 </head>
-<body>
+    <body>
 
-  <div class="container" color:#ffffff;>
-    <div class='navbar navbar-inverse' style='padding-left:20px;padding-right:20px;'>
+      <div class="container" color:#ffffff;>
+        <div class='navbar navbar-inverse' style='padding-left:20px;padding-right:20px;'>
 
-      <div class='navbar-inner nav-collapse' style="height: auto;">
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Detailed View</a></li>
-          <li><a href="#">Register Phone</a></li>
-        </ul>
-      </div>
-    </div>
-
-      <div id='content' class='row-fluid'>
-            <div class="container-fluid">
-      <div class="row-fluid">
-    
-
-        <div id="village_container" class="span12">
-          <div class="hero-unit">
-            <h1>Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+          <div class='navbar-inner nav-collapse' style="height: auto;">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Detailed View</a></li>
+              <li><a href="/admin.html">Register Phone</a></li>
+            </ul>
           </div>
+        </div>
+        
+        
+        <div id='content' class='row-fluid'>
+    	    <div class="container-fluid">
+    		    <div class="row-fluid">
+    		        
+    		        <div id="village_container" class="span12">
+    		          <div class="hero-unit" style="background-color:#FF7600;">
+    		            
+                       
+                        <img class='icon' src="images/noun_project_20568.svg" alt="Hand">
+                        
+                        <h1 style="color:black;">MediData</h1>
+                        <!-- <img class='icon' src="images/noun_project_682.svg" alt="PersonBook">
+                        <img class='icon' src="images/noun_project_1675.svg" alt="Clipboard">
+                        <img class='icon' src="images/noun_project_4316.svg" alt="Bag">
+                        <img class='icon' src="images/noun_project_17581.svg" alt="Hospital">
+                        <img class='icon' src="images/noun_project_22672.svg" alt="Notebook">
+                        <img class='icon' src="images/noun_project_22780.svg" alt="Doctor"> -->
+    		            <p>An amazing platform allowing citizens of thirld world countries to have access to the latest medical treatments.</p>
+    		            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    		          </div>
 
-          <!-- FIRST ROW -->
-          <div id="first_row" class="row-fluid"></div>
-          
-          <!-- SECOND ROW -->
-          <div class="row-fluid"></div>
+    		          <!-- FIRST ROW -->
+    		          <div id="first_row" class="row-fluid"></div>
+    		          
+    		          <!-- SECOND ROW -->
+    		          <div class="row-fluid"></div>
+
+    		        </div><!--/span-->
+    		      </div><!--/row-->
+
+            <div class="well">
+                <select>
+                    <option>Malaria</option>
+                    <option>Small Pox</option>
+                    <option>HIV</option>
+                </select>
+                <button>Filter</button>
+            </div>
+
+    	    <hr>
+
+          	<footer>
+            	<p>&copy; Company 2013</p>
+          	</footer>
+
+    	    </div><!--/.fluid-container-->
+        </div>
 
 
-        </div><!--/span-->
-      </div><!--/row-->
+       
+      </div>
+      
+    </body>
 
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
-
-    </div><!--/.fluid-container-->
-    </div>
-   
-  </div>
-  
-
-</body>
 </html>

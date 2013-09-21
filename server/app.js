@@ -32,27 +32,25 @@ app.get('/', function(req, res){
 app.get('/admin', function(req, res){
     res.redirect('/admin.html');
 });
+app.get('/detailed/:villageId', function(req, res){
+    console.log(req.params);
+    res.redirect('/detailed.html#' + req.params.villageId);
+});
+
+app.post('/api/register_number', function(req, res){
+    console.log(req.body.data);
+    res.send();
+})
 
 // app.post()
 // app.push()
 // app.delete();
-// 
-// 
 
 
 // The main caller to the api URL
 
 app.get('/api/villages', handle.getVillages);
-/*app.get('/api/villages', function(req, res){
-    villages = [{
-            name:"First Village", "diseases": {"Malaria" : 10,"HIV" : 39,"Small Pox" : 2} 
-        },                    
-        {
-            name:"Second Village", "diseases": {"Malaria" : 120,"HIV" : 12,"Small Pox" : 4} 
-        }
-    ]
-    res.send(villages);
-})*/
+
 // app.get('/api/diseases', handle.getDiseases);
 app.get('/api/diseases', handle.getDiseasesByQuery);
 app.get('/api/diseases/:villageName', handle.getDiseasesByVillage);
@@ -97,7 +95,7 @@ function check_sms(number, i) {
 check_sms();
 
 var total_messages = [0,0];
-// var total_messages = 0;
+
 setInterval ( check_sms, 1000, '12247721893', 0 );
 setInterval ( check_sms, 1000, '14502350575', 1);
 

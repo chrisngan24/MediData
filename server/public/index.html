@@ -1,81 +1,119 @@
-<html>
-	<head>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-		
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<!DOCTYPE html>
+<head>
+<title>Twitter Bootstrap Tutorial - A responsive layout tutorial</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+<style type='text/css'>
+body 
+{
+background-color: #CCC;
+}
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+.span4 {
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 20px;
+}
 
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+.span4 h2 {
+  text-align: center;
+}
 
-		
-		<script>
-		$(document).ready(function(){
+.span4 h4 {
+  text-align: center;
+}
 
-			vs = []
+.span4 table {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+</style>
 
-			$.ajax({
-				type: 'GET',
-				url: 	'http://localhost:3000/api/villages',
-				success: function(data) {
-					vs = data;
+  <script>
+    $(document).ready(function(){
 
-					for (var i in data) {
-						el = $("<div class='village_block'>" +  + "</div>")
-						village_title = "<div class='village_title'>" + data[i].name + "</div>"
-						el.append(village_title)
+    vs = []
 
-						disease_table = $("<table class='disease_table'><tr><th>Disease</th><th># of People Infected</th></tr></table>")
+    $.ajax({
+      type: 'GET',
+      url:  'http://localhost:3000/api/villages',
+      success: function(data) {
+        vs = data;
+        appended = 0;
+        curr_row = $("#first_row")
+
+        
+
+        for (var i in data) {
+          v_block = $("<div class='span4'><h2>" + data[i].name + "</h2><h4>Admin:" + data[i].administrator + "</h4></div>")
+          
+          
+          table = $("<table class='table'></table>")
+          table.append("<tr><th>Disease</th><th># People Infected</th></tr>")
+
+          for (var k in vs[i].diseases) {
+          	table.append('<tr><td>' + vs[i].diseases[k].disease + '</td><td>' + vs[i].diseases[k].count + '</td></tr>')
+          }
+
+          v_block.append(table)
+          $("#first_row").append(v_block)
+
+        }   
+      }
+    });
+  });
+    
+    
+  </script>
+</head>
+<body>
+
+  <div class="container" color:#ffffff;>
+    <div class='navbar navbar-inverse' style='padding-left:20px;padding-right:20px;'>
+
+      <div class='navbar-inner nav-collapse' style="height: auto;">
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Detailed View</a></li>
+          <li><a href="#">Register Phone</a></li>
+        </ul>
+      </div>
+    </div>
+
+      <div id='content' class='row-fluid'>
+            <div class="container-fluid">
+      <div class="row-fluid">
+    
+
+        <div id="village_container" class="span12">
+          <div class="hero-unit">
+            <h1>Hello, world!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+          </div>
+
+          <!-- FIRST ROW -->
+          <div id="first_row" class="row-fluid"></div>
+          
+          <!-- SECOND ROW -->
+          <div class="row-fluid"></div>
 
 
-						for (var k in vs[i].diseases) { 
-							disease_table.append('<tr><td>' + k + '</td>' + '<td>' + vs[i].diseases[k] + '</td></tr>')
-						}
-						el.append(disease_table)
-						$("#main").append(el)
+        </div><!--/span-->
+      </div><!--/row-->
 
-					}		
-				}
-			});
-		});
-			
-			
-		</script>
+      <hr>
 
-	</head>
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
 
-	<body>
-		
-		<div id="main">
-			<div class="jumbotron">
-			  <div class="container">
-			    <h1>Disease Information</h1>
-			    <p>Our application displays the statistics of diseases in various third world villages across the world.</p>
-			    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
-			  </div>
-			</div>
-			
-			<form class="filters">
-	            <select>
-	              <option>Malaria</option>
-	              <option>HIV</option>
-	              <option>Small Pox</option>
-	            </select>
+    </div><!--/.fluid-container-->
+    </div>
+   
+  </div>
+  
 
-	            <select>
-	              <option>Village1</option>
-	              <option>Village2</option>
-	              <option>Village3</option>
-	            </select>
-
-	            
-          	</form>
-
-		</div>
-	</body>
-
+</body>
 </html>

@@ -81,12 +81,16 @@ var generateTextMsg = function() {
     return textMsg;
 }
 
+
 console.log("parsing text");
 var textObject = generateTextMsg();
 var diseaseStats = util.parseTextMsg(textObject.message, textObject.phoneNumber);
 //handle.pushVillage(diseaseStats);
 //console.log(diseaseStats);
 
+
+
+// var diseaseStats = util.parseTextMsg(generateTextMsg().message);
 
 
 req.body.village = diseaseStats;

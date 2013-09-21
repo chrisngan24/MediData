@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+		<script>
+			
+			vs = []
+
+			$.ajax({
+				type: 'GET',
+				url: 	'http://localhost:3000/api/villages',
+				success: function(data) {
+					vs = data;
+
+					for (var i in data) {
+						el = $("<div class='village_block'>" +  + "</div>")
+						village_title = "<div class='village_title'>" + data[i].name + "</div>"
+						el.append(village_title)
+
+						disease_table = $("<table class='disease_table'><tr><th>Disease</th><th># of People Infected</th></tr></table>")
+
+
+						for (var k in vs[i].diseases) { 
+							disease_table.append('<tr><td>' + k + '</td>' + '<td>' + vs[i].diseases[k] + '</td></tr>')
+						}
+						el.append(disease_table)
+						$("#main").append(el)
+
+					}		
+				}
+			});
+			
+		</script>
+
+	</head>
+
+	<body>
+		<div id="main">
+			<h1 id="title">Disease Information</h1>
+			<div id="filters">
+				<select>
+					<option>Malaria</option><option>HIV</option><option>Small Pox</option>
+				</select>
+
+			</div>
+		</div>
+	</body>
+
+</html>

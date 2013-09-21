@@ -1,0 +1,30 @@
+body{
+	margin: 0;
+}
+
+#main {
+	
+}
+
+#title {
+	text-align: center;
+	background-color: #0772A1;
+	padding: 40px;
+	color: #FFB700;
+}
+
+.village_block {
+	background-color: red;
+	margin: 20px 100px;
+	padding: 50px;
+}
+
+.village_title {
+	font-size: 30px;
+	color: white;
+	text-align: center;
+}
+
+.disease_table {
+	border: 1px solid black;
+}

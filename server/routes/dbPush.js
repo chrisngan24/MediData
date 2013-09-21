@@ -12,7 +12,7 @@ exports.pushPhoneNumberWithVillage = function(village, phoneNumber, callback){
 }
 
 exports.pushVillage = function(village, callback){
-	dbConfig.connectVillage(function(villageColl){		
+	dbConfig.connectVillage(function(villageColl){
 		villageColl.insert(village, callback);
 	});
 }

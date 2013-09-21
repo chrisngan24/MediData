@@ -22,14 +22,16 @@ exports.getDiseases = function(req, res){
 }
 
 exports.pushVillage = function(req, res){
-	
+
 	dbPush.pushVillage(req.body.village, function(){
 		console.log('added village data');
 	});
 }
 
 exports.registerNumber = function(req, res){
-	dbPush.pushPhoneNumber(req.body.phoneNumber, function(){
-		console.log('number registered');
+	var phoneNumber = req.body.phoneNumber;
+	var village = phoneNumber;
+	dbPush.pushVillage(village, function(){
+		console.log('village registered');
 	})
 }

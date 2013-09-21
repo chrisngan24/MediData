@@ -9,14 +9,17 @@ exports.pushTextMsg = function(textMessage, callback){
 	console.log(phoneNumber);
 	dbGet.getVillageByPhoneNumber(phoneNumber, function(village){
 		// console.log(village);
-		var diseases = util.parseTextMsg(message, village);
-		console.log(diseases);		
-		for (var i = 0; i < diseases.length; i++){
-			dbPush.pushDisease(diseases[i], function(){
-				if(i == diseases.length){
-					callback();
-				}
-			})
+		if(village!=null){
+
+			var diseases = util.parseTextMsg(message, village);
+			console.log(diseases);		
+			for (var i = 0; i < diseases.length; i++){
+				dbPush.pushDisease(diseases[i], function(){
+					if(i == diseases.length){
+						callback();
+					}
+				})
+			}
 		}
 
 		// dbPush.pushDisease(diseases, 0, function(){

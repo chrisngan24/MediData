@@ -143,13 +143,13 @@ var response = {
                 send : function(){
                     
                     // if (i == phoneNumbers.length)
-                        // generateTextMessages();    
+                    //     generateTextMessages();    
                 }
             });                            
         }
     }
 }
-handle.deleteAll({}, response)
+handle.deleteAll({}, response);
 
 // function test()
 // {
@@ -160,8 +160,8 @@ handle.deleteAll({}, response)
 var generateTextMessages = function(){
     console.log('generating');
     var NUMBER_OF_PHONE_NUMBERS = 15;
-    var PHONES = ['12247721893', '16478897900', '16478651425'];
-    var DISEASE_TYPES = ['Malaria', 'HIV', 'SmallPox'];
+    var PHONES = ['12247721893', '14502350575', '16478651425'];
+    var DISEASE_TYPES = ['M', 'H', 'S'];
 
     // x is a number by which the traits are randomized
     var generateTextMsg = function(x) {

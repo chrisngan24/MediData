@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		
+		
+		<script>
+			
+			$(document).ready(function(){
+				$("#register_num").on('click',function(){
+					phone_number = $("#phone_number").val()
+					admin_name = $("#admin_name").val()
+					village_name = $("#village_name").val()
+					village_location = $("#village_location").val()
+					latitude = $("#lat").val()
+					longitude = $("#long").val()
+
+					console.log(phone_number)
+					console.log(admin_name)
+					console.log(village_name)
+					console.log(village_location)
+					console.log(latitude)
+					console.log(longitude)
+					
+					$.ajax({
+						type: 'POST',
+						url: 	'http://localhost:3000/api/register_number',
+						data: {'number':phone_number,'name':admin_name,'village_name':village_name,'location':village_location, 'latitude':latitude,'longitude':longitude},
+						success: function(data) {
+							alert('Number sucessfully registered')	
+						}
+					});
+
+				});
+			});
+
+		</script>
+
+	</head>
+
+	<body>
+        <label>Phone Number</label><input id="phone_number" type='text'></input>
+        <label>Name</label><input id="admin_name" type='text'></input>
+		<label>Village Name</label><input id='village_name' type='text'></input>
+		<label>Location</label><input id='village_location' type='text'></input>
+		<label>Latitude</label><input id='lat' type='text'></input>
+		<label>Longitude</label><input id='long' type='text'></input>
+        <button id='register_num'>Register</button>
+	</body>
+
+</html>

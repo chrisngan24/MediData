@@ -28,3 +28,11 @@ body{
 .disease_table {
 	border: 1px solid black;
 }
+
+.filters {
+	margin-left: 100px;
+}
+
+.filters select{
+	padding: 5px;
+}

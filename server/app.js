@@ -1,8 +1,13 @@
 var express = require('express');
+var twilio = require('twilio');
 var handle = require('./routes/handle');
 var util = require('./routes/util');
 var path = require('path');
 var app = express();
+
+//twilio variables
+var client = new twilio.RestClient('AC6ccc5ad275f60124a022af13ae9d4773', 'ca5dfff962e288351dca2103705ebbda');
+var total_messages = 0;
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -53,6 +58,45 @@ app.get('/api/phoneNumbers', handle.getPhoneNumbers);
 app.get('/api/villages/:phoneNumber', handle.getVillageByPhoneNumber);
 app.listen(3000);
 
+
+
+function check_sms(phoneNumber) {
+
+    //Loop through a list of SMS messages sent from a given number
+    client.listSms({
+        from:phoneNumber
+    }, function (err, responseData) {
+        
+        if (total_messages == 0) {
+            total_messages = responseData.smsMessages.length
+            
+        }
+
+        if (total_messages != responseData.smsMessages.length) {
+            total_messages = responseData.smsMessages.length;
+            // console.log(total_messages);
+            console.log(responseData.smsMessages[0].body);
+        }
+        
+
+        
+            
+
+    });
+
+}
+
+check_sms();
+setInterval ( check_sms, 1000, '+12247721893' );
+
+
+
+
+
+
+
+
+//
 var response = {
     send : function(blah){
         console.log('DeleteAll');

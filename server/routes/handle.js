@@ -51,6 +51,14 @@ exports.deleteAll = function(req, res){
 	});
 }
 
+exports.getDiseasesByQuery = function(req,res){
+	var query = req.query;
+	console.log(query);
+	dbGet.getDiseasesByQuery(query, function(diseases){
+		res.send(diseases);
+	})
+}
+
 exports.pushTextMsg = function(textMessage, callback){
 	dbPush.pushTextMsg(textMessage, function(){
 

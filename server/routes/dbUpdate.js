@@ -8,7 +8,7 @@ exports.updateVillage = function(village, callback){
 		}, function(err, cursor){
 			cursor.sort({time: -1},function(err, cur){
 				cur.toArray(function(err, array){
-					console.log(array[0]);
+					//TO FIX
 					village['diseases'] = [array[0], array[1], array[2]];
 					dbConfig.connectVillage(function(villageColl){
 						console.log('updated village');

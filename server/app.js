@@ -53,7 +53,8 @@ app.get('/api/villages', handle.getVillages);
     ]
     res.send(villages);
 })*/
-app.get('/api/diseases', handle.getDiseases);
+// app.get('/api/diseases', handle.getDiseases);
+app.get('/api/diseases', handle.getDiseasesByQuery);
 app.get('/api/phoneNumbers', handle.getPhoneNumbers);
 app.get('/api/villages/:phoneNumber', handle.getVillageByPhoneNumber);
 app.listen(3000);

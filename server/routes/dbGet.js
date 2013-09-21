@@ -26,7 +26,19 @@ exports.getVillageByPhoneNumber = function(phoneNumber, callback){
 	})
 }
 
-// exports.getDiseaseByQuery = function(query, callback)
+exports.getDiseasesByQuery = function(query, callback){
+	dbConfig.connectDisease(function(diseaseColl){
+		console.log(query);
+		diseaseColl.find(query,
+			function(err, cursor){
+				cursor.toArray(function(err,array){
+
+					callback(array);
+				});
+			}
+		)
+	});
+}
 
 exports.getPhoneNumbers = function(callback){
 	dbConfig.connectPhoneNumber(function(phoneNumbersColl){

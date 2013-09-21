@@ -2,6 +2,7 @@
 	<head>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
 		
 		
 		<script>
@@ -39,13 +40,85 @@
 	</head>
 
 	<body>
-        <label>Phone Number</label><input id="phone_number" type='text'></input>
+
+		<form class="form-horizontal">
+		<fieldset>
+
+		<!-- Form Name -->
+		<legend>Registration</legend>
+
+		<!-- Text input-->
+		<div class="control-group">
+		  <label class="control-label" for="textinput">Phone number</label>
+		  <div class="controls">
+		    <input id="phone_number" name="textinput" type="text" placeholder="" class="input-xlarge">
+		    <p class="help-block">help</p>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="control-group">
+		  <label class="control-label" for="textinput">Admin name</label>
+		  <div class="controls">
+		    <input id="admin_name" name="textinput" type="text" placeholder="" class="input-xlarge">
+		    <p class="help-block">help</p>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="control-group">
+		  <label class="control-label" for="textinput">Village name</label>
+		  <div class="controls">
+		    <input id="village_name" name="textinput" type="text" placeholder="" class="input-xlarge">
+		    <p class="help-block">help</p>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="control-group">
+		  <label class="control-label" for="textinput">Location</label>
+		  <div class="controls">
+		    <input id="village_location" name="textinput" type="text" placeholder="" class="input-xlarge">
+		    <p class="help-block">help</p>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="control-group">
+		  <label class="control-label" for="textinput">Latitude</label>
+		  <div class="controls">
+		    <input id="lat" name="textinput" type="text" placeholder="" class="input-xlarge">
+		    <p class="help-block">help</p>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="control-group">
+		  <label class="control-label" for="textinput">Longitude</label>
+		  <div class="controls">
+		    <input id="long" name="textinput" type="text" placeholder="" class="input-xlarge">
+		    <p class="help-block">help</p>
+		  </div>
+		</div>
+
+		<!-- Button -->
+		<div class="control-group">
+		  <label class="control-label" for="singlebutton"></label>
+		  <div class="controls">
+		    <button id="register_num" name="singlebutton" class="btn btn-primary">Register</button>
+		  </div>
+		</div>
+
+		</fieldset>
+
+		</form>
+        <!--<label>Phone Number</label><input id="phone_number" type='text'></input>
         <label>Name</label><input id="admin_name" type='text'></input>
 		<label>Village Name</label><input id='village_name' type='text'></input>
 		<label>Location</label><input id='village_location' type='text'></input>
 		<label>Latitude</label><input id='lat' type='text'></input>
 		<label>Longitude</label><input id='long' type='text'></input>
-        <button id='register_num'>Register</button>
+        <button id='register_num'>Register</button>-->
 	</body>
 
 </html>

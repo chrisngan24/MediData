@@ -30,6 +30,21 @@ app.get('/api/phoneNumbers', handle.getPhoneNumbers);
 // app.post()
 // app.push()
 // app.delete();
+// 
+// 
+var registerNumbers = function(){
+	var phoneNumber = {
+		'number' : '9058871226'
+
+	}
+}
+// function test()
+// {
+//    console.log('hello');
+//    setTimeout(test, 5000);
+// }
+
+test();
 
 
 app.listen(3000);

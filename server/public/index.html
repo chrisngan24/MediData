@@ -2,7 +2,17 @@
 	<head>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/index.css">
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+		
 		<script>
 			
 			vs = []
@@ -37,13 +47,30 @@
 
 	<body>
 		<div id="main">
-			<h1 id="title">Disease Information</h1>
-			<div id="filters">
-				<select>
-					<option>Malaria</option><option>HIV</option><option>Small Pox</option>
-				</select>
-
+			<div class="jumbotron">
+			  <div class="container">
+			    <h1>Disease Information</h1>
+			    <p>Our application displays the statistics of diseases in various third world villages across the world.</p>
+			    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+			  </div>
 			</div>
+			
+			<form class="filters">
+	            <select>
+	              <option>Malaria</option>
+	              <option>HIV</option>
+	              <option>Small Pox</option>
+	            </select>
+
+	            <select>
+	              <option>Village1</option>
+	              <option>Village2</option>
+	              <option>Village3</option>
+	            </select>
+
+	            
+          	</form>
+
 		</div>
 	</body>
 

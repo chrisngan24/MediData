@@ -1,4 +1,5 @@
 var express = require('express');
+var handle = require('./routes/handle');
 var app = express();
 
 var allowCrossDomain = function(req, res, next) {
@@ -18,9 +19,14 @@ app.configure(function() {
 });
 
 
-app.get('/api/', function(req, res){
 
-  res.send('hello world');
-});
+app.get('/api/hello', handle.hello);
+
+
+
+// app.post()
+// app.push()
+// app.delete();
+
 
 app.listen(3000);

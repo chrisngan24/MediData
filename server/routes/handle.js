@@ -1,6 +1,7 @@
 var dbConfig = require('./dbConfig');
 var dbGet = require('./dbGet');
 var dbPush = require('./dbPush');
+var dbDelete = require('./dbDelete');
 
 
 exports.getVillages = function(req, res){
@@ -42,4 +43,10 @@ exports.registerNumber = function(req, res){
 	dbPush.pushVillage(village, function(){
 		console.log('village registered');
 	})
+}
+
+exports.deleteAll = function(req, res){
+	dbDelete.deleteAll(function(){
+		console.log('Delete all');
+	});
 }

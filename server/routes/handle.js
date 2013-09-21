@@ -51,8 +51,10 @@ exports.deleteAll = function(req, res){
 	});
 }
 
-exports.pushTextMsg = function(req, res){
-	dbPush.pushTextMsg(req.body.textMessage, function(){
+exports.pushTextMsg = function(textMessage, callback){
+	dbPush.pushTextMsg(textMessage, function(){
+
 		console.log('message sent');
+		callback();
 	})
 }

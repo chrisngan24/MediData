@@ -24,6 +24,8 @@ exports.getVillageByPhoneNumber = function(phoneNumber, callback){
 	})
 }
 
+// exports.getDiseaseByQuery = function(query, callback)
+
 exports.getPhoneNumbers = function(callback){
 	dbConfig.connectPhoneNumber(function(phoneNumbersColl){
 		phoneNumbersColl.find({}, function(err, cursor){

@@ -7,7 +7,7 @@ var app = express();
 
 //twilio variables
 var client = new twilio.RestClient('AC6ccc5ad275f60124a022af13ae9d4773', 'ca5dfff962e288351dca2103705ebbda');
-var total_messages = 0;
+
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -60,34 +60,44 @@ app.listen(3000);
 
 
 
-function check_sms(phoneNumber) {
+function check_sms(number, i) {
+    try{
+        //Loop through a list of SMS messages sent from a given number
+        client.listSms({
+            from:number
+        }, function (err, responseData) {
+            if(responseData.smsMessages!= null){
 
-    //Loop through a list of SMS messages sent from a given number
-    client.listSms({
-        from:phoneNumber
-    }, function (err, responseData) {
-        
-        if (total_messages == 0) {
-            total_messages = responseData.smsMessages.length
-            
-        }
+                if (total_messages[i] == 0) {
+                    total_messages[i] = responseData.smsMessages.length;
+                    
+                }
 
-        if (total_messages != responseData.smsMessages.length) {
-            total_messages = responseData.smsMessages.length;
-            // console.log(total_messages);
-            console.log(responseData.smsMessages[0].body);
-        }
-        
+                if (total_messages[i] != responseData.smsMessages.length) {
+                    total_messages[i] = responseData.smsMessages.length;
+                    
+                    // console.log(responseData.smsMessages[0].body);
+                    var textMessage = {
+                        message : responseData.smsMessages[0].body,
+                        phoneNumber : number
+                    }
+                    handle.pushTextMsg(textMessage, function(){
+                        console.log('messaged pushed');
+                    })
+                }
+                
+            }
 
-        
-            
-
-    });
-
+        });
+    }catch(e){}
 }
 
 check_sms();
-setInterval ( check_sms, 1000, '+12247721893' );
+
+var total_messages = [0,0];
+// var total_messages = 0;
+setInterval ( check_sms, 1000, '12247721893', 0 );
+setInterval ( check_sms, 1000, '14502350575', 1);
 
 
 
@@ -104,15 +114,15 @@ var response = {
         
         phoneNumbers.push({
             'number' : '12247721893',
-            'administrator' : 'Clement Fung',
+            'administrator' : 'Kishan Dedakia',
             'name' : 'village 1',
             'latitude' :1,
             'longitude' : 1
         });
         console.log(phoneNumbers);
         phoneNumbers.push({
-            'number' : '16478897900',
-            'administrator' : 'Arthur Yan',
+            'number' : '14502350575',
+            'administrator' : 'Vishal Mathur',
             'name' : 'village 2',
             'latitude' :2,
             'longitude' : 2
@@ -132,8 +142,8 @@ var response = {
             handle.registerNumber(req,{
                 send : function(){
                     
-                    if (i == phoneNumbers.length)
-                        generateTextMessages();    
+                    // if (i == phoneNumbers.length)
+                        // generateTextMessages();    
                 }
             });                            
         }
@@ -177,7 +187,9 @@ var generateTextMessages = function(){
                 textMessage : textObj
             }
         }
-        handle.pushTextMsg(req);
+        handle.pushTextMsg(textObj, function(){
+            console.log('fake added');
+        });
     }
 
 }

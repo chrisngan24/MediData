@@ -31,3 +31,9 @@ body
 .filters select{
 	padding: 5px;
 }
+
+.icon {
+	height:60px;
+	float:left;
+	padding-right:15px;
+}

@@ -1,5 +1,6 @@
 var express = require('express');
 var handle = require('./routes/handle');
+var util = require('./routes/util');
 var app = express();
 
 var allowCrossDomain = function(req, res, next) {
@@ -18,15 +19,8 @@ app.configure(function() {
     app.use(allowCrossDomain);
 });
 
-
-
+// The main caller to the api URL
+var output = util.parseDiseases("Malaria,3");
 app.get('/api/hello', handle.hello);
-
-
-
-// app.post()
-// app.push()
-// app.delete();
-
 
 app.listen(3000);

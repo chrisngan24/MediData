@@ -2,16 +2,18 @@ exports.initializeDiseases = function(){
 		
 };
 
-exports.parseTextMsg = function(textmessage, villageName){
-
-	var diseaseObject = {};
+exports.parseTextMsg = function(textmessage, village){
+	var diseaseArray = [];	
 	var diseaseComponents;
 	var n = textmessage.split(",");
 
-	for (var i = n.length - 1; i >= 0; i--) {
+	for (var i = 0; i < n.length; i++) {
+		diseaseArray.push({});
+		diseaseObject = diseaseArray[i];
 		diseaseComponents = n[i].split(":");
 		diseaseObject[diseaseComponents[0]] = diseaseComponents[1];
-		diseaseObject['Village Name'] = villageName;
+		diseaseObject['villageName'] = village.name;
+		diseaseObject['_villageId'] = village._id;
 	}
 
 	return diseaseObject;

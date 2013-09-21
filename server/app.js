@@ -24,6 +24,9 @@ app.configure(function() {
 app.get('/', function(req, res){
     res.redirect('/index.html');
 });
+app.get('/admin', function(req, res){
+    res.redirect('/admin.html');
+});
 
 // app.post()
 // app.push()
@@ -47,58 +50,95 @@ app.get('/api/villages', handle.getVillages);
 })*/
 app.get('/api/diseases', handle.getDiseases);
 app.get('/api/phoneNumbers', handle.getPhoneNumbers);
+app.get('/api/villages/:phoneNumber', handle.getVillageByPhoneNumber);
 app.listen(3000);
 
-
-var registerNumbers = function(){
-    var phoneNumber = {
-        'number' : '12247721893',
-        'administrator' : 'Clement Fung'
+var response = {
+    send : function(blah){
+        console.log('DeleteAll');
+        var phoneNumbers = [];
+        
+        phoneNumbers.push({
+            'number' : '12247721893',
+            'administrator' : 'Clement Fung',
+            'name' : 'village 1',
+            'latitude' :1,
+            'longitude' : 1
+        });
+        console.log(phoneNumbers);
+        phoneNumbers.push({
+            'number' : '16478897900',
+            'administrator' : 'Arthur Yan',
+            'name' : 'village 2',
+            'latitude' :2,
+            'longitude' : 2
+        });
+        phoneNumbers.push({
+            'number' : '16478651425',
+            'administrator' : 'Yannick Ngana',
+            'name' : 'village 3',
+            'latitude' :3,
+            'longitude' : 3
+        });
+        console.log('hello')
+        for (var i = 0; i < phoneNumbers.length; i++){
+            var req = {};
+            req.body = {};
+            req.body.phoneNumber = phoneNumbers[i];
+            handle.registerNumber(req,{
+                send : function(){
+                    
+                    if (i == phoneNumbers.length)
+                        generateTextMessages();    
+                }
+            });                            
+        }
     }
-
-    return phoneNumber;
 }
-
-var req = {};
-req.body = {};
-req.body.phoneNumber = registerNumbers();
-handle.registerNumber(req, function(){});
+handle.deleteAll({}, response)
 
 // function test()
 // {
 //    console.log('hello');
 //    setTimeout(test, 5000);
 // }
+// 
+var generateTextMessages = function(){
+    console.log('generating');
+    var NUMBER_OF_PHONE_NUMBERS = 15;
+    var PHONES = ['12247721893', '16478897900', '16478651425'];
+    var DISEASE_TYPES = ['Malaria', 'HIV', 'SmallPox'];
 
-var NUMBER_OF_PHONE_NUMBERS = 15;
-var PHONES = [12247721893, 16478897900, 16478651425];
-var DISEASE_TYPES = ['Malaria', 'HIV', 'SmallPox'];
+    // x is a number by which the traits are randomized
+    var generateTextMsg = function(x) {
 
-// x is a number by which the traits are randomized
-var generateTextMsg = function(x) {
+        textcode = DISEASE_TYPES[(x + 4) % 3] + ':' + x + ',' + DISEASE_TYPES[(x + 2) % 3]  + ':' + (x+2);
+        console.log(textcode);
 
-    textcode = DISEASE_TYPES[(x + 4) % 3] + ':' + x + ',' + DISEASE_TYPES[(x + 2) % 3]  + ':' + (x+2);
-    console.log(textcode);
+        var textMsg = {
+            'message' : textcode,
+            'phoneNumber' : PHONES[x % 3]
+        };
 
-    var textMsg = {
-        'message' : textcode,
-        'phoneNumber' : PHONES[i % 3]
+        return textMsg;
     };
 
-    return textMsg;
-};
+    var diseapseStats = [];
+    var textObj;
+    
+    // for (var i = 0; i < NUMBER_OF_PHONE_NUMBERS; i++) {
+        textObj = generateTextMsg(0);
+        var req = {
+            body:{
+                textMessage : textObj
+            }
+        }
+        handle.pushTextMsg(req);
+    // }
 
-var diseaseStats = [];
-var textObj;
-
-for (var i = 0; i < NUMBER_OF_PHONE_NUMBERS; i++) {
-    textObj = generateTextMsg(i);
-    diseaseStats.push(util.parseTextMsg(textObj.message, textObj.phoneNumber));
 }
 
-console.log("parsing text");
-//var textObject = generateTextMsg();
-//var diseaseStats = util.parseTextMsg(textObject.message, textObject.phoneNumber);
 
-req.body.village = diseaseStats;
-handle.pushVillage(req, function(){});
+
+
+

@@ -12,6 +12,17 @@ exports.getVillages = function(callback){
 	});
 }
 
+exports.getVillageByPhoneNumber = function(phoneNumber, callback){
+	dbConfig.connectVillage(function(villageColl){
+		villageColl.find({
+			number : phoneNumber
+		}, function(err, cursor){
+			cursor.toArray(function(err, array){
+				callback(array[0]);
+			})
+		});
+	})
+}
 
 exports.getPhoneNumbers = function(callback){
 	dbConfig.connectPhoneNumber(function(phoneNumbersColl){

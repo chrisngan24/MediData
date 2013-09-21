@@ -1,6 +1,7 @@
 var dbConfig = require('./dbConfig');
 var dbGet = require('./dbGet');
 var dbPush = require('./dbPush');
+var dbDelete = require('./dbDelete');
 
 
 exports.getVillages = function(req, res){
@@ -21,6 +22,14 @@ exports.getDiseases = function(req, res){
 	})
 }
 
+exports.getVillageByPhoneNumber = function(req, res){
+	var phoneNumber = req.params.phoneNumber;
+	dbGet.getVillageByPhoneNumber(phoneNumber, function(village){
+		console.log(village);
+		res.send(village);
+	})
+}
+
 exports.pushVillage = function(req, res){
 
 	dbPush.pushVillage(req.body.village, function(){
@@ -32,6 +41,18 @@ exports.registerNumber = function(req, res){
 	var phoneNumber = req.body.phoneNumber;
 	var village = phoneNumber;
 	dbPush.pushVillage(village, function(){
-		console.log('village registered');
+		res.send('registered');
+	})
+}
+
+exports.deleteAll = function(req, res){
+	dbDelete.deleteAll(function(){
+		res.send('end');
+	});
+}
+
+exports.pushTextMsg = function(req, res){
+	dbPush.pushTextMsg(req.body.textMessage, function(){
+		console.log('message sent');
 	})
 }

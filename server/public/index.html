@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<title>Twitter Bootstrap Tutorial - A responsive layout tutorial</title>
+<title>MediData</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@ background-color: #CCC;
 
 
         for (var i in data) {
-          v_block = $("<div class='span4'><h2>" + data[i].name + "</h2><h4>Admin:" + data[i].administrator + "</h4></div>")
+          v_block = $("<div class='span4'><h2><a href='http://localhost:3000/detailed/" + data[i]._id + "'>" + data[i].name + "</h2><h4>Admin:" + data[i].administrator + "</h4></div>")
           
           
           table = $("<table class='table'></table>")
@@ -69,51 +69,51 @@ background-color: #CCC;
     
   </script>
 </head>
-<body>
+    <body>
 
-  <div class="container" color:#ffffff;>
-    <div class='navbar navbar-inverse' style='padding-left:20px;padding-right:20px;'>
+      <div class="container" color:#ffffff;>
+        <div class='navbar navbar-inverse' style='padding-left:20px;padding-right:20px;'>
 
-      <div class='navbar-inner nav-collapse' style="height: auto;">
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Detailed View</a></li>
-          <li><a href="#">Register Phone</a></li>
-        </ul>
+          <div class='navbar-inner nav-collapse' style="height: auto;">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Detailed View</a></li>
+              <li><a href="/admin.html">Register Phone</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id='content' class='row-fluid'>
+    	    <div class="container-fluid">
+    		    <div class="row-fluid">
+    		        
+    		        <div id="village_container" class="span12">
+    		          <div class="hero-unit">
+    		            <h1>MediData</h1>
+    		            <p>An amazing platform allowing citizens of thirld world countries to have access to the latest medical treatments.</p>
+    		            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    		          </div>
+
+    		          <!-- FIRST ROW -->
+    		          <div id="first_row" class="row-fluid"></div>
+    		          
+    		          <!-- SECOND ROW -->
+    		          <div class="row-fluid"></div>
+
+    		        </div><!--/span-->
+    		      </div><!--/row-->
+
+    	    <hr>
+
+          	<footer>
+            	<p>&copy; Company 2013</p>
+          	</footer>
+
+    	    </div><!--/.fluid-container-->
+        </div>
+       
       </div>
-    </div>
+      
+    </body>
 
-    <div id='content' class='row-fluid'>
-	    <div class="container-fluid">
-		    <div class="row-fluid">
-		        
-		        <div id="village_container" class="span12">
-		          <div class="hero-unit">
-		            <h1>Hello, world!</h1>
-		            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-		            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-		          </div>
-
-		          <!-- FIRST ROW -->
-		          <div id="first_row" class="row-fluid"></div>
-		          
-		          <!-- SECOND ROW -->
-		          <div class="row-fluid"></div>
-
-		        </div><!--/span-->
-		      </div><!--/row-->
-
-	    <hr>
-
-      	<footer>
-        	<p>&copy; Company 2013</p>
-      	</footer>
-
-	    </div><!--/.fluid-container-->
-    </div>
-   
-  </div>
-  
-
-</body>
 </html>

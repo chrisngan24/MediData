@@ -4,6 +4,7 @@ var dbPush = require('./dbPush');
 var dbDelete = require('./dbDelete');
 
 
+
 exports.getVillages = function(req, res){
 	dbGet.getVillages(function(villages){
 		res.send(villages);
@@ -22,8 +23,18 @@ exports.getDiseases = function(req, res){
 	})
 }
 
+exports.getDiseasesByVillage = function(req, res){
+	var villageName = req.params.villageName;
+	console.log(villageName)
+	dbGet.getDiseasesByVillage(villageName, function(village){
+		console.log(village);
+		res.send(village);
+	})
+}
+
 exports.getVillageByPhoneNumber = function(req, res){
 	var phoneNumber = req.params.phoneNumber;
+	console.log(phoneNumber);
 	dbGet.getVillageByPhoneNumber(phoneNumber, function(village){
 		console.log(village);
 		res.send(village);

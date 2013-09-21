@@ -1,6 +1,5 @@
 var dbConfig = require('./dbConfig');
-
-
+var ObjectID = require('mongodb').ObjectID;
 
 exports.getVillages = function(callback){
 	dbConfig.connectVillage(function(village){
@@ -12,7 +11,18 @@ exports.getVillages = function(callback){
 	});
 }
 
-
+exports.getDiseasesByQuery = function(query, callback){
+	dbConfig.connectDisease(function(diseaseColl){
+		console.log(query);
+		diseaseColl.find(query,
+			function(err, cursor){
+				cursor.toArray(function(err,array){
+					callback(array);
+				});
+			}
+		)
+	});
+}
 
 exports.getVillageByPhoneNumber = function(phoneNumber, callback){
 	dbConfig.connectVillage(function(villageColl){
@@ -26,17 +36,16 @@ exports.getVillageByPhoneNumber = function(phoneNumber, callback){
 	})
 }
 
-exports.getDiseasesByQuery = function(query, callback){
-	dbConfig.connectDisease(function(diseaseColl){
-		console.log(query);
-		diseaseColl.find(query,
-			function(err, cursor){
-				cursor.toArray(function(err,array){
-
-					callback(array);
-				});
-			}
-		)
+exports.getDiseasesByVillage = function(villageName, callback) {
+	dbConfig.connectDisease(function(diseaseColl) {
+		console.log(villageName);
+		diseaseColl.find({ 
+			name : villageName
+		}, function(err, cursor){
+			cursor.toArray(function(err,array){
+				callback(array);
+			})
+		});
 	});
 }
 

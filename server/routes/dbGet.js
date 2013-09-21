@@ -12,6 +12,8 @@ exports.getVillages = function(callback){
 	});
 }
 
+
+
 exports.getVillageByPhoneNumber = function(phoneNumber, callback){
 	dbConfig.connectVillage(function(villageColl){
 		villageColl.find({

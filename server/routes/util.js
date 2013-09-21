@@ -8,14 +8,13 @@ exports.parseTextMsg = function(textmessage, village){
 		var diseaseComponents;
 		var n = textmessage.split(",");
 
-		for (var i = 0; i < n.length; i++) {
-			diseaseArray.push({});
-			diseaseObject = diseaseArray[i];
+		for (var i = 0; i < n.length; i++) {			
+			var diseaseObject = {};
 
 			diseaseComponents = n[i].split(":");
 			switch(diseaseComponents[0]){
 				case 'M': //Malayria
-					diseaseObject['disease'] = 'Malayria';
+					diseaseObject['disease'] = 'Malaria';
 					diseaseObject['count'] = diseaseComponents[1];
 					break;
 				case 'H': //HIV
@@ -30,10 +29,13 @@ exports.parseTextMsg = function(textmessage, village){
 					break;
 				
 			};
+			if(diseaseObject['disease'] != null){
+				diseaseObject['name'] = village.name;
+				diseaseObject['time'] = new Date().getTime();
+				diseaseObject['_villageId'] = village._id;
+				diseaseArray.push(diseaseObject);
+			}
 			
-			diseaseObject['name'] = village.name;
-			diseaseObject['time'] = new Date().getTime();
-			diseaseObject['_villageId'] = village._id;
 		}
 	}catch(e){}
 

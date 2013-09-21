@@ -20,7 +20,7 @@ exports.pushVillage = function(village, callback){
 }
 
 exports.pushPhoneNumber = function(phoneNumber, callback){
-	dbConfig.connectPhoneNumbers(function(phoneNumberColl){
+	dbConfig.connectPhoneNumber(function(phoneNumberColl){
 		phoneNumberColl.insert(phoneNumber, callback);
 	});
 }

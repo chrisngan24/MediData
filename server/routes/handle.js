@@ -1,5 +1,6 @@
 var dbConfig = require('./dbConfig');
 var dbGet = require('./dbGet');
+var dbPush = require('./dbPush');
 
 var hello = {
 	data : 'clement is a sexy beast'
@@ -25,5 +26,12 @@ exports.getPhoneNumbers = function(req, res){
 exports.getDiseases = function(req, res){
 	dbGet.getDiseases(function(diseases){
 		res.send(diseases);
+	})
+}
+
+
+exports.registerNumber = function(req, res){
+	dbPush.pushPhoneNumber(req.body.phoneNumber, function(){
+		console.log('number registered');
 	})
 }

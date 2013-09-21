@@ -26,9 +26,19 @@ app.get('/', function(req, res){
 });
 
 // The main caller to the api URL
-var output = util.parseDiseases("Malaria,3");
+
 app.get('/api/hello', handle.hello);
-app.get('/api/villages', handle.getVillages);
+// app.get('/api/villages', handle.getVillages);
+app.get('/api/villages', function(req, res){
+    villages = [{
+            name:"First Village", "diseases": {"Malaria" : 10,"HIV" : 39,"Small Pox" : 2} 
+        },                    
+        {
+            name:"Second Village", "diseases": {"Malaria" : 120,"HIV" : 12,"Small Pox" : 4} 
+        }
+    ]
+    res.send(villages);
+})
 app.get('/api/diseases', handle.getDiseases);
 app.get('/api/phoneNumbers', handle.getPhoneNumbers);
 
@@ -42,10 +52,18 @@ app.get('/api/phoneNumbers', handle.getPhoneNumbers);
 // 
 var registerNumbers = function(){
 	var phoneNumber = {
-		'number' : '9058871226'
-
+		'number' : '9058871226',
+        'administrator' : 'Clement Fung'
 	}
+
+    return phoneNumber;
 }
+
+var req = {};
+req.body = {};
+req.body.phoneNumber = registerNumbers();
+
+handle.registerNumber(req, function(){});
 // function test()
 // {
 //    console.log('hello');
@@ -54,5 +72,15 @@ var registerNumbers = function(){
 
 // test();
 
+var generateTextMsg = function() {
+    var textMsg = {
+        'message' : 'Malaria:3,HIV:4',
+        'phoneNumber' : '9058871226'
+    };
+
+    return textMsg;
+}
+
+// var diseaseStats = util.parseTextMsg(generateTextMsg().message);
 
 app.listen(3000);

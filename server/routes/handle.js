@@ -6,7 +6,7 @@ var hello = {
 }
 
 exports.hello = function(req, res){
-	res.send(hello);
+	res.send(req.toString());
 }
 
 

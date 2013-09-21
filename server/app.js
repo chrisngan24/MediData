@@ -21,6 +21,7 @@ app.configure(function() {
 
 
 app.get('/api/hello', handle.hello);
+app.get('/api/villages', handle.getVillages);
 
 
 

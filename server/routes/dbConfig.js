@@ -39,15 +39,15 @@ mongo.connect(mongourl, function(err, mongoClient){
     }
 });
 
-var connectPhoneNumber = function(callback){
+exports.connectPhoneNumber = function(callback){
 	connectMongo(collPhoneNumber, callback);
 };
 
-var connectVillage = function(callback){
+exports.connectVillage = function(callback){
 	connectMongo(collVillage, callback);
 };
 
-var connectDisease = function(callback){
+exports.connectDisease = function(callback){
 	connectMongo(collVillage, callback);
 };
 
@@ -59,4 +59,6 @@ var connectMongo = function(collName, callback){
     });
 }
 
+exports.registerPhoneNumber = function(){
 
+}

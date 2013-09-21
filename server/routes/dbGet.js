@@ -2,10 +2,12 @@ var dbConfig = require('./dbConfig');
 
 
 
-exports.getVillage = function(){
+exports.getVillages = function(callback){
 	dbConfig.connectVillage(function(village){
-		village.insert({
-			data : "hello"
+		village.find({}, function(err, cursor){
+			cursor.toArray(function(err, array){
+				callback(array);
+			})
 		})
 	});
 }

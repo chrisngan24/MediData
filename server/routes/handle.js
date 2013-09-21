@@ -41,12 +41,18 @@ exports.registerNumber = function(req, res){
 	var phoneNumber = req.body.phoneNumber;
 	var village = phoneNumber;
 	dbPush.pushVillage(village, function(){
-		console.log('village registered');
+		res.send('registered');
 	})
 }
 
 exports.deleteAll = function(req, res){
 	dbDelete.deleteAll(function(){
-		console.log('Delete all');
+		res.send('end');
 	});
+}
+
+exports.pushTextMsg = function(req, res){
+	dbPush.pushTextMsg(req.body.textMessage, function(){
+		console.log('message sent');
+	})
 }

@@ -6,7 +6,9 @@ var util = require('./util');
 exports.pushTextMsg = function(textMessage, callback){
 	var message = textMessage.message;
 	var phoneNumber = textMessage.phoneNumber;
+	console.log(phoneNumber);
 	dbGet.getVillageByPhoneNumber(phoneNumber, function(village){
+		// console.log(village);
 		var diseases = util.parseTextMsg(message, village);
 		console.log(diseases);
 	})
@@ -18,11 +20,13 @@ exports.pushPhoneNumberWithVillage = function(village, phoneNumber, callback){
 	village['_phoneNumberId'] = phoneNumber._id;
 	//phoneNumber['_villageId'] = phoneNumber._villageId;
 		
-	dbConfig.connectPhoneNumbers(function(phoneNumberColl){		
+	dbConfig.connectPhoneNumbers(function(phoneNumberColl){
 		phoneNumberColl.insert();
 	});
 	
 }
+
+
 
 
 

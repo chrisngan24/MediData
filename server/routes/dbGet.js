@@ -36,11 +36,11 @@ exports.getVillageByPhoneNumber = function(phoneNumber, callback){
 	})
 }
 
-exports.getDiseasesByVillage = function(villageName, callback) {
+exports.getDiseasesByVillage = function(villageId, callback) {
 	dbConfig.connectDisease(function(diseaseColl) {
-		console.log(villageName);
+		console.log(villageId);
 		diseaseColl.find({ 
-			name : villageName
+			_villageId : villageId
 		}, function(err, cursor){
 			cursor.toArray(function(err,array){
 				callback(array);

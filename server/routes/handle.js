@@ -21,6 +21,14 @@ exports.getDiseases = function(req, res){
 	})
 }
 
+exports.getVillageByPhoneNumber = function(req, res){
+	var phoneNumber = req.params.phoneNumber;
+	dbGet.getVillageByPhoneNumber(phoneNumber, function(village){
+		console.log(village);
+		res.send(village);
+	})
+}
+
 exports.pushVillage = function(req, res){
 
 	dbPush.pushVillage(req.body.village, function(){

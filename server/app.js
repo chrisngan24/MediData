@@ -37,6 +37,11 @@ app.get('/detailed/:villageId', function(req, res){
     res.redirect('/detailed.html#' + req.params.villageId);
 });
 
+app.post('/api/register_number', function(req, res){
+    console.log(req.body.data);
+    res.send();
+})
+
 // app.post()
 // app.push()
 // app.delete();

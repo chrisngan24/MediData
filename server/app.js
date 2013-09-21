@@ -1,6 +1,7 @@
 var express = require('express');
 var handle = require('./routes/handle');
 var util = require('./routes/util');
+var path = require('path');
 var app = express();
 
 var allowCrossDomain = function(req, res, next) {
@@ -15,8 +16,13 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
-    // app.use(express.static(path.join(__dirname, 'public')));
+
+    app.use(express.static(path.join(__dirname, 'public')));
     app.use(allowCrossDomain);
+});
+
+app.get('/', function(req, res){
+    res.redirect('/index.html');
 });
 
 // The main caller to the api URL

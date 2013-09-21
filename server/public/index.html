@@ -2,7 +2,9 @@
 <head>
 <title>Twitter Bootstrap Tutorial - A responsive layout tutorial</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="css/index.css">
 <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+
 <style type='text/css'>
 body 
 {
@@ -43,7 +45,7 @@ background-color: #CCC;
         appended = 0;
         curr_row = $("#first_row")
 
-        
+
 
         for (var i in data) {
           v_block = $("<div class='span4'><h2>" + data[i].name + "</h2><h4>Admin:" + data[i].administrator + "</h4></div>")
@@ -81,35 +83,33 @@ background-color: #CCC;
       </div>
     </div>
 
-      <div id='content' class='row-fluid'>
-            <div class="container-fluid">
-      <div class="row-fluid">
-    
+    <div id='content' class='row-fluid'>
+	    <div class="container-fluid">
+		    <div class="row-fluid">
+		        
+		        <div id="village_container" class="span12">
+		          <div class="hero-unit">
+		            <h1>Hello, world!</h1>
+		            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+		            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+		          </div>
 
-        <div id="village_container" class="span12">
-          <div class="hero-unit">
-            <h1>Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-          </div>
+		          <!-- FIRST ROW -->
+		          <div id="first_row" class="row-fluid"></div>
+		          
+		          <!-- SECOND ROW -->
+		          <div class="row-fluid"></div>
 
-          <!-- FIRST ROW -->
-          <div id="first_row" class="row-fluid"></div>
-          
-          <!-- SECOND ROW -->
-          <div class="row-fluid"></div>
+		        </div><!--/span-->
+		      </div><!--/row-->
 
+	    <hr>
 
-        </div><!--/span-->
-      </div><!--/row-->
+      	<footer>
+        	<p>&copy; Company 2013</p>
+      	</footer>
 
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
-
-    </div><!--/.fluid-container-->
+	    </div><!--/.fluid-container-->
     </div>
    
   </div>

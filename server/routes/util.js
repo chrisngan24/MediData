@@ -12,7 +12,8 @@ exports.parseTextMsg = function(textmessage, village){
 			var diseaseObject = {};
 
 			diseaseComponents = n[i].split(":");
-			switch(diseaseComponents[0]){
+			diseaseCode = diseaseComponents[0].trim();
+			switch(diseaseCode){
 				case 'M': //Malayria
 					diseaseObject['disease'] = 'Malaria';
 					diseaseObject['count'] = diseaseComponents[1];

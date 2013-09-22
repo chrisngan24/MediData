@@ -36,7 +36,7 @@ exports.parseTextMsg = function(textmessage, village){
 				diseaseObject['time'] = new Date().getTime();
 				diseaseObject['_villageId'] = village._id;
 				diseaseArray.push(diseaseObject);
-				console.log("Parsed: " + diseaseObject.disease);
+				//console.log("Parsed: " + diseaseObject.disease);
 			}
 
 		}

@@ -182,8 +182,8 @@ function drawLineChart(village){
 				else if (disease === "Smallpox") {
 					plotData.data[2].push(vs[i].count);
 					//plotData.dates.push((new Date(vs[i].time)).getUTCMilliseconds().toString());
-					dateCounter++;
-					plotData.dates.push(dateCounter.toString());
+					//dateCounter++;
+					plotData.dates.push(' ');
 				}
 
 			}	

@@ -74,6 +74,11 @@ exports.getDiseasesByQuery = function(req,res){
 	var query = req.query;
 	var orQuery=[];
 	var villageQuery={};
+	var disease;
+	var finalQ={};
+	if(query.disease!=null){
+		finalQ['disease'] = query.disease;		
+	}
 	// if(query.disease!=null){
 	// 	var diseases = query.disease.split(' ');
 	// 	dis = [];
@@ -85,7 +90,7 @@ exports.getDiseasesByQuery = function(req,res){
 	// 	orQuery.push({
 	// 		$or : dis
 	// 	});
-		
+	
 
 	// }
 	if(query._villageId!=null){
@@ -97,14 +102,16 @@ exports.getDiseasesByQuery = function(req,res){
 				_villageId : villages[i]
 			});
 		}
-		villageQuery={
-			$or : que
-		};
+		finalQ['$or'] = que;
+		// villageQuery
+		// 	$or : que
+		// };
 	}
-	query =	villageQuery;
+
+	// query =	villageQuery;
 	
-	console.log(query);
-	dbGet.getDiseasesByQuery(query, function(diseases){
+	console.log(finalQ);
+	dbGet.getDiseasesByQuery(finalQ, function(diseases){
 		res.send(diseases);
 	})
 }

@@ -201,7 +201,12 @@ function drawLineChart(village){
 			scaleOverride : true,
 			scaleSteps : 15,
 			scaleStepWidth : 6,
+			hAxis :{
+				textPosition : 'none'
+			},
+			// scaleFontSize : 0,
 			scaleStartValue : 0
+
 		};
 
 		new Chart(ctx).Line(data, lineChartOptions);

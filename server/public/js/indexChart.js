@@ -87,10 +87,11 @@ function drawChart(villages){
 						break;
 					}
 				}
-				if(i %checkedVillages.length ==0)
+				if(i %checkedVillages.length ==0){
 					//plotData.dates.push(new Date(vs[i].time).getDate());
 					dateCounter++;
 					plotData.dates.push(dateCounter.toString());
+				}
 				if(vs[i].count > max)
 					max = vs[i].count;
 			}	
@@ -127,7 +128,7 @@ function drawChart(villages){
 			scaleStepWidth : 6,
 			scaleStartValue : 0,
 			// scaleShowValues : false,
-			scaleFontSize : 10
+			scaleFontSize : 0
 			// hAxis: { 
 			// 	textPosition:'none'
 				

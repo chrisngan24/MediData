@@ -52,8 +52,11 @@ exports.getDiseasesByVillage = function(villageId, callback) {
 		diseaseColl.find({ 
 			_villageId : villageId
 		}, function(err, cursor){
-			cursor.toArray(function(err,array){
-				callback(array);
+			cursor.sort({time:1},function(err,sorted){
+				sorted.toArray(function(err,array){
+					callback(array);
+				})
+				
 			})
 		});
 	});

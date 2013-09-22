@@ -72,7 +72,7 @@ function check_sms(number, i) {
                     }
                     handle.pushTextMsg(textMessage, function(){
                         console.log('messaged pushed');
-                        send_sms(number,'AYE AYE CAP\'N!')
+                        // send_sms(number,'AYE AYE CAP\'N!')
                     })
                 }
                 
@@ -99,20 +99,20 @@ var response = {
             'number' : '12247721893',
             'administrator' : 'Kishan Dedakia',
             'name' : 'Tagi',
-            'population' : 15000
+            'population' : 830
         });
         //console.log(phoneNumbers);
         phoneNumbers.push({
             'number' : '14502350575',
             'administrator' : 'Vishal Mathur',
             'name' : 'Pagong',
-            'population' : 12000
+            'population' : 1120
         });
         phoneNumbers.push({
             'number' : '16478651425',
             'administrator' : 'Yannick Ngana',
             'name' : 'Rattana',
-            'population' : 7000
+            'population' : 6500
         });
         for (var i = 0; i < phoneNumbers.length; i++){
             var req = {};
@@ -145,9 +145,14 @@ var generateTextMessages = function(){
     // x is a number by which the traits are randomized
     var generateTextMsg = function(x) {
 
-        textcode = DISEASE_TYPES[0] + ':' + x + ',' + DISEASE_TYPES[1]  + ':' + (x+2) + "," + DISEASE_TYPES[2]  + ':' + (x+1);
-        //console.log(textcode);
+        var generateRandom = function(){
+            return Math.floor(Math.random() * (20 - 5) + 5);
+        }
 
+        // textcode = DISEASE_TYPES[0] + ':' + x + ',' + DISEASE_TYPES[1]  + ':' + (x+2) + "," + DISEASE_TYPES[2]  + ':' + (x+1);
+        //console.log(textcode);
+        textcode = DISEASE_TYPES[0] + ':' + generateRandom() +','+DISEASE_TYPES[1] +':' 
+            + generateRandom() + ',' + DISEASE_TYPES[2] + ':' + generateRandom();
         var textMsg = {
             'message' : textcode,
             'phoneNumber' : PHONES[x % 3]

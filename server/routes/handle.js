@@ -72,8 +72,46 @@ exports.getVillageById = function(req, res){
 
 exports.getDiseasesByQuery = function(req,res){
 	var query = req.query;
-	console.log(query);
-	dbGet.getDiseasesByQuery(query, function(diseases){
+	var orQuery=[];
+	var villageQuery={};
+	var disease;
+	var finalQ={};
+	if(query.disease!=null){
+		finalQ['disease'] = query.disease;		
+	}
+	// if(query.disease!=null){
+	// 	var diseases = query.disease.split(' ');
+	// 	dis = [];
+	// 	for (var i = 0; i < diseases.length;i++){
+	// 		dis.push({
+	// 			disease : diseases[i]
+	// 		});
+	// 	}
+	// 	orQuery.push({
+	// 		$or : dis
+	// 	});
+	
+
+	// }
+	if(query._villageId!=null){
+		var villages = query._villageId.split(' ');
+		query.villages = villages;
+		que = [];
+		for (var i = 0; i < villages.length;i++){
+			que.push({
+				_villageId : villages[i]
+			});
+		}
+		finalQ['$or'] = que;
+		// villageQuery
+		// 	$or : que
+		// };
+	}
+
+	// query =	villageQuery;
+	
+	console.log(finalQ);
+	dbGet.getDiseasesByQuery(finalQ, function(diseases){
 		res.send(diseases);
 	})
 }

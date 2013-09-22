@@ -1,9 +1,11 @@
 var diseases = window.diseases;
 $(document).ready(function(){
 	var villages;
+	console.log(diseases);
 	for(var i = 0; i < diseases.length; i++){
-		$('#diseaseCheckBoxes').append('<label class="checkbox">'+
-			'<input type="checkbox" class="diseaseCheckBox">' +diseases[i]+'</label>');	
+		console.log(diseases[i])
+		$('#diseaseSelect').append('<option>'
+			 +diseases[i]+'</option>');	
 	}
 
 	$.ajax({
@@ -14,12 +16,16 @@ $(document).ready(function(){
 			villages = data;
 			for(var i = 0; i < villages.length; i++){
 				$('#villageCheckBoxes').append('<label class="checkbox">'+
-				'<input type="checkbox" class="villageCheckBox">' +villages[i].name+'</label>');	
+				'<input type="checkbox" class="villageCheckBox">' +villages[i].name+'</input></label>');	
 			}			
 
 			drawChart(villages);
 
-			
+			$('#querySubmit').click(function(eve){
+				drawChart(villages);
+			});
+
+
 		}
 	});
 
@@ -29,53 +35,107 @@ $(document).ready(function(){
 function drawChart(villages){
 	checkedDiseases =[];
 	checkedVillages = [];
-	$('.villageCheckBoxes').each(function(i, ele){
-		checkedVillages.push(villages[i]);
-	})
+	$('#villageCheckBoxes input').each(function(i, ele){
+		if(ele.checked == true)
+			checkedVillages.push(villages[i]);
+	});
 
-	$('.diseaseCheckBox').each(function(i, ele){
-		checkedDiseases.push(diseases[i]);
-	})
+	var disease = $('#diseaseSelect option:selected').text()
+	
+ 	queryString = '?disease=' + disease +'&_villageId=';
+
+ 	for(var i = 0; i < checkedVillages.length; i ++){
+ 		queryString+= checkedVillages[i]._id;
+ 		if(i != checkedVillages.length-1)
+ 			queryString+= '+';
+ 	}
+
+ 	var max =0;
 
 	var plotData = {
 		dates : [],
-		data:[]
-		
+		data:[]		
 	}
 
-	for (var i =0; i < window.diseases.length; i ++){
-		plotData.data.push([]);
-	}
+	
 
 	vs = [];
+	$.ajax({
+		type:'GET',
+		url: 'http://localhost:3000/api/diseases' + queryString,
+		success: function(data){
+			console.log(data);
+			vs = data;
+			plotData = {
+				dates : [],
+				data:[]		
+			}
+			
 
 
-	function render(allData){
+			for (var i =0; i < checkedVillages.length; i ++){
+				plotData.data.push([]);
+				
+			}
+
+
+
+			for (var i in vs) {			
+				for (var j = 0; j < checkedVillages.length;j++){
+					if(vs[i]._villageId == checkedVillages[j]._id){
+						plotData.data[j].push(vs[i].count);
+						break;
+					}
+				}
+				if(i %checkedVillages.length ==0)
+					plotData.dates.push(new Date(vs[i].time).getDate());
+				if(vs[i].count > max)
+					max = vs[i].count;
+			}	
+
+			debugger;
+			render();
+		}
+	})
+
+	function render(){
 	
 		$('#queryChart').html('');
 		var ctx = $("#queryChart").get(0).getContext("2d");
 		//This will	 get the first returned node in the jQuery collection.
 		var mChart = new Chart(ctx);
 
+		dataSetArray =[];
+		for(var i = 0; i < plotData.data.length; i++)
+			dataSetArray.push({
+				fillColor : "rgba("+i*10+",100,0,0.5)",
+				strokeColor : "rgba("+i*10+",100,0,0.5)",
+				pointColor : "rgba("+i*10+",100,0,)",
+				pointStrokeColor : "#fff",
+				data : plotData.data[i]
+			})
+
 		var data = {
 			labels : plotData.dates,
-			datasets : [
-				{
-					fillColor : "rgba(250,100,0,0.5)",
-					strokeColor : "rgba(250,100,0,1)",
-					pointColor : "rgba(250,100,0,1)",
-					pointStrokeColor : "#fff",
-					data : allData
-				}
-			]
+			datasets : dataSetArray
 		};
 
 		var lineChartOptions = {
 			scaleOverride : true,
-			scaleSteps : 20,
+			scaleSteps : 20, 
 			scaleStepWidth : 1,
-			scaleStartValue : 0
+			scaleStartValue : 0,
+			// scaleShowValues : false,
+			scaleFontSize :0
+			// hAxis: { 
+			// 	textPosition:'none'
+				
+			// }	
 		};
+
+		
+
+
 
 		new Chart(ctx).Line(data, lineChartOptions);
 	}

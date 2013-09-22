@@ -12,7 +12,9 @@
 	</head>
 
 	<body>
+		
 		<div class="container">
+			
 			<div class='navbar navbar-inverse' style='padding-left:20px;padding-right:20px;'>
 	          <div class='navbar-inner nav-collapse' style="height: auto;">
 	            <ul class="nav">
@@ -22,67 +24,75 @@
 	          </div>
 	        </div>
 
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="page-header">
-  						<h1 id="detailTitle">Example page header</h1>
-					</div>
-				</div>
-			</div>
-			<div class="row-fluid">
-				<div class="span7">
-					<div class="hero-unit">
-						<div class="row-fluid currentStats">							
-							<div class="span4">
-								<h2>Malaria</h2>
-								<h1 id="mCurrent">23</h1>
-								<h2 id="mCurrentPercentage">45%</h2>
-							</div>
-							<div class="span4">
-								<h2>HIV</h2>
-								<h1 id="hCurrent">23</h1>
-								<h2 id="hCurrentPercentage">45%</h2>
-							</div>
-							<div class="span4">
-								<h2>Smallpox</h2>
-								<h1 id="sCurrent">23</h1>
-								<h2 id="scurrentPercentage">45%</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="span5">
-					<div class="row-fluid">
-						<div class="span12">
-							<div class="hero-unit">
-								Village is healthy
+	        <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="hero-unit" style="background-color:#FF7600;">
+                        
+                        <img class='icon' src="images/noun_project_22672.svg" alt="Notebook">
+                        
+                        <h1 id="village_name" style="color:black;"></h1>
+                      </div>
+                </div>
+
+				<div class="row-fluid">
+					<div class="span8">
+						<div class="hero-unit">
+							<div class="row-fluid currentStats">
+								<div class="span4">
+									<h2 title="Disease">Malaria</h2>
+									<h1 title="Population Affected" id="mCurrent"></h1>
+									<h5 title="% of Population Affected" id="mCurrentPercentage">-1%</h5>
+								</div>
+								<div class="span4">
+									<h2 title="Disease">HIV</h2>
+									<h1 title="Population Affected" id="hCurrent"></h1>
+									<h5 title="% of Population Affected" id="hCurrentPercentage">-1%</h5>
+								</div>
+								<div class="span4">
+									<h2 title="Disease">Smallpox</h2>
+									<h1 title="Population Affected" id="sCurrent"></h1>
+									<h5 title="% of Population Affected" id="sCurrentPercentage">-1%</h5>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row-fluid">
-						<div class="span10">
+					<div class="span4">
+						<div class="hero-unit">
+							<div id="village_population"></div>
+							<div id="village_status"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="hero-unit">
+							<canvas id="myChart" width="1100" height="350"></canvas>
+							<form id="graphingSelection">
+					            <div id="diseaseCheckBoxes"></div>
+					            <!-- <select>
+					              <option>Malaria</option>
+					              <option>HIV</option>
+					              <option>Smallpox</option>
+					            </select> -->
+					    	</form>	
+						</div>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="hero-unit">
 							<canvas id="healthPieChart" width="200" height="200"></canvas>
 						</div>
-						<div class="span2">
-							<div class="hero-unit"></div>
-						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row-fluid">
-				<div class="span10">
-					<canvas id="myChart" width="700" height="500"></canvas>
-				</div>
-				<div class="span2">
-					<form id="graphingSelection">
-			            <select>
-			              <option>Malaria</option>
-			              <option>HIV</option>
-			              <option>Smallpox</option>
-			            </select>
-			    </form>	
-				</div>
-			</div>	
+				
+				
+
+            </div>
+
+				
 						
 		</div>
 				

@@ -1,3 +1,6 @@
+.currentStats {
+  text-align: center;
+}
 body {
   background-image: url(../images/grey_wash_wall.png);
   margin: 0;

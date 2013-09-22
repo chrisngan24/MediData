@@ -1,5 +1,43 @@
+var gVillage;
 $(document).ready(function(){	
+	// gVillage = village;
+	debugger;
+	var id = (location.hash);
+
+	$.ajax({
+		type: 'GET',
+		url: 'http://localhost:3000/api/villages/' + id.substring(1),
+		success: function(data){
+			gVillage = data;
+			drawLineChart(data);
+			updateStats(data);
+		}
+	});
+
+});
+
+function updateStats(village){
+	$('#detailTitle').text(village.name);	
+	for (var i =0 ; i < village.diseases.length; i++){
+		var elId='';
+		switch(village.diseases[i].disease){
+			case 'Malaria':
+				elId = '#mCurrent';
+				break;
+			case 'HIV':
+				elId = '#hCurrent';
+				break;
+			case 'Smallpox':
+				elId = '#sCurrent';
+				break;
+		}
+		$(elId).text(village.diseases[i].count);
+	}
 	
+}
+
+function drawLineChart(village){
+
 	var plotData = {
 		dates : [],
 		data:[[],[],[]]
@@ -76,4 +114,4 @@ $(document).ready(function(){
 
 
 	}
-})
+}

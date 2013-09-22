@@ -145,9 +145,14 @@ var generateTextMessages = function(){
     // x is a number by which the traits are randomized
     var generateTextMsg = function(x) {
 
-        textcode = DISEASE_TYPES[0] + ':' + x + ',' + DISEASE_TYPES[1]  + ':' + (x+2) + "," + DISEASE_TYPES[2]  + ':' + (x+1);
-        //console.log(textcode);
+        var generateRandom = function(){
+            return Math.floor(Math.random() * (20 - 5) + 5);
+        }
 
+        // textcode = DISEASE_TYPES[0] + ':' + x + ',' + DISEASE_TYPES[1]  + ':' + (x+2) + "," + DISEASE_TYPES[2]  + ':' + (x+1);
+        //console.log(textcode);
+        textcode = DISEASE_TYPES[0] + ':' + generateRandom() +','+DISEASE_TYPES[1] +':' 
+            + generateRandom() + ',' + DISEASE_TYPES[2] + ':' + generateRandom();
         var textMsg = {
             'message' : textcode,
             'phoneNumber' : PHONES[x % 3]

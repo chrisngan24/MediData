@@ -99,20 +99,20 @@ var response = {
             'number' : '12247721893',
             'administrator' : 'Kishan Dedakia',
             'name' : 'Tagi',
-            'population' : 15000
+            'population' : 830
         });
         //console.log(phoneNumbers);
         phoneNumbers.push({
             'number' : '14502350575',
             'administrator' : 'Vishal Mathur',
             'name' : 'Pagong',
-            'population' : 12000
+            'population' : 1120
         });
         phoneNumbers.push({
             'number' : '16478651425',
             'administrator' : 'Yannick Ngana',
             'name' : 'Rattana',
-            'population' : 7000
+            'population' : 6500
         });
         for (var i = 0; i < phoneNumbers.length; i++){
             var req = {};

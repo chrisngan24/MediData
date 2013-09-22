@@ -81,7 +81,6 @@ exports.getDiseasesByQuery = function(req,res){
 
 exports.pushTextMsg = function(textMessage, callback){
 	dbPush.pushTextMsg(textMessage, function(){
-
 		console.log('message sent');
 		callback();
 	})

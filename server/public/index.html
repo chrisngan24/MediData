@@ -2,8 +2,11 @@
 <head>
 <title>MediData</title>
 <script type="text/javascript" src="libs/jquery-latest.pack.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/indexChart.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+<!-- <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet"> -->
+<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <style type='text/css'>
 /*body 
@@ -154,12 +157,17 @@
     		      </div><!--/row-->
 
             <div class="well">
-                <select>
-                    <option>Malaria</option>
-                    <option>Small Pox</option>
-                    <option>HIV</option>
-                </select>
-                <button>Filter</button>
+                <div class="row-fluid">
+                  <div class="span2">
+                    <div id="diseaseCheckBoxes"></div>
+                  </div>
+                  <div class="span2">
+                    <div id="villageCheckBoxes"></div>
+                  </div>
+                  <div class="span8">
+                    <canvas id="queryChart"></canvas>
+                  </div>
+                </div>
             </div>
 
     	    <hr>

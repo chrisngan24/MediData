@@ -1,0 +1,1 @@
+window.diseases = ['Malaria', 'Smallpox', 'HIV'];

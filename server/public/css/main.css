@@ -1,0 +1,19 @@
+body {
+  background-color: #CCC;
+  margin: 0;
+}
+.filters {
+  margin-left: 100px;
+}
+.filters select {
+  padding: 5px;
+}
+.icon {
+  height: 60px;
+  float: left;
+  padding-right: 15px;
+}
+.c-icon {
+  height: 140px;
+  padding-top: 10px;
+}

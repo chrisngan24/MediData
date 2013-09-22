@@ -52,9 +52,6 @@ exports.pushVillage = function(req, res){
 exports.registerNumber = function(req, res){
 	var village =  req.body.phoneNumber;
 	village._id = util.getUUID();
-
-	console.log(village);
-
 	dbPush.pushVillage(village, function(){
 		res.send('registered');
 	})

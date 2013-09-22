@@ -7,7 +7,7 @@ var util = require('./util');
 exports.pushTextMsg = function(textMessage, callback){
 	var message = textMessage.message;
 
-	if (message.split(",").length != 3) {
+	if (message.split(",").length != 6) {
 		// Text back that message unsuccessful
 		console.log("BAD INPUT");
 		return false;
@@ -20,8 +20,9 @@ exports.pushTextMsg = function(textMessage, callback){
 		if (village != null){
 
 			var diseases = util.parseTextMsg(message, village);
-			
+
 			for (var i = 0; i < diseases.length; i++){
+				//console.log("Pushing:" + diseases[i].disease);
 				dbPush.pushDisease(diseases[i], function(){
 					if(i == diseases.length){
 						dbUpdate.updateVillage(village, diseases, callback);

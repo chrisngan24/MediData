@@ -11,7 +11,7 @@ exports.updateVillage = function(village, diseases, callback){
 					//TO FIX
 					village['diseases'] = diseases;
 					dbConfig.connectVillage(function(villageColl){
-						console.log('updated village');
+						//console.log('updated village');
 						villageColl.update(
 							{
 								_id : village._id

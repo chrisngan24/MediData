@@ -104,7 +104,6 @@ var response = {
             'name' : 'Tagi',
             'population' : 830
         });
-        //console.log(phoneNumbers);
         phoneNumbers.push({
             'number' : '14502350575',
             'administrator' : 'Vishal Mathur',
@@ -140,7 +139,7 @@ handle.deleteAll({}, response);
 // }
 // 
 var generateTextMessages = function(){
-    console.log('generating');
+    //console.log('generating');
     var NUMBER_OF_PHONE_NUMBERS = 15;
     var PHONES = ['12247721893', '14502350575', '16478651425'];
     var DISEASE_TYPES = ['M', 'H', 'S'];
@@ -153,9 +152,11 @@ var generateTextMessages = function(){
         }
 
         // textcode = DISEASE_TYPES[0] + ':' + x + ',' + DISEASE_TYPES[1]  + ':' + (x+2) + "," + DISEASE_TYPES[2]  + ':' + (x+1);
-        //console.log(textcode);
-        textcode = DISEASE_TYPES[0] + ':' + generateRandom() +','+DISEASE_TYPES[1] +':' 
-            + generateRandom() + ',' + DISEASE_TYPES[2] + ':' + generateRandom();
+        textcode = DISEASE_TYPES[0] + ',' + generateRandom() + ',' + DISEASE_TYPES[1] + ',' 
+            + generateRandom() + ',' + DISEASE_TYPES[2] + ',' + generateRandom();
+        
+        console.log(textcode);
+
         var textMsg = {
             'message' : textcode,
             'phoneNumber' : PHONES[x % 3]
@@ -175,7 +176,7 @@ var generateTextMessages = function(){
             }
         }
         handle.pushTextMsg(textObj, function(){
-            console.log('fake added');
+            //console.log('fake added');
         });
     }
 

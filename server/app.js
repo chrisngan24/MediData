@@ -149,7 +149,7 @@ var generateTextMessages = function(){
     var generateTextMsg = function(x) {
 
         var generateRandom = function(){
-            return Math.floor(Math.random() * (20 - 5) + 5);
+            return Math.floor(Math.random() * (20 - 5) + 35);
         }
 
         // textcode = DISEASE_TYPES[0] + ':' + x + ',' + DISEASE_TYPES[1]  + ':' + (x+2) + "," + DISEASE_TYPES[2]  + ':' + (x+1);

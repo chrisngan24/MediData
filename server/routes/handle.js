@@ -2,6 +2,8 @@ var dbConfig = require('./dbConfig');
 var dbGet = require('./dbGet');
 var dbPush = require('./dbPush');
 var dbDelete = require('./dbDelete');
+var util = require('./util');
+
 
 
 exports.getVillages = function(req, res){
@@ -22,8 +24,18 @@ exports.getDiseases = function(req, res){
 	})
 }
 
+exports.getDiseasesByVillage = function(req, res){
+	var villageId = req.params.villageId;
+	console.log(villageId)
+	dbGet.getDiseasesByVillage(villageId, function(village){
+		console.log(village);
+		res.send(village);
+	})
+}
+
 exports.getVillageByPhoneNumber = function(req, res){
 	var phoneNumber = req.params.phoneNumber;
+	console.log(phoneNumber);
 	dbGet.getVillageByPhoneNumber(phoneNumber, function(village){
 		console.log(village);
 		res.send(village);
@@ -40,6 +52,7 @@ exports.pushVillage = function(req, res){
 exports.registerNumber = function(req, res){
 	var phoneNumber = req.body.phoneNumber;
 	var village = phoneNumber;
+	village._id = util.getUUID();
 	dbPush.pushVillage(village, function(){
 		res.send('registered');
 	})
@@ -49,6 +62,13 @@ exports.deleteAll = function(req, res){
 	dbDelete.deleteAll(function(){
 		res.send('end');
 	});
+}
+
+exports.getVillageById = function(req, res){
+	villageId = req.params.villageId;
+	dbGet.getVillageById(villageId, function(village){
+		res.send(village);
+	})
 }
 
 exports.getDiseasesByQuery = function(req,res){

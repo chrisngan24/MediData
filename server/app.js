@@ -37,6 +37,11 @@ app.get('/detailed/:villageId', function(req, res){
     res.redirect('/detailed.html#' + req.params.villageId);
 });
 
+app.post('/api/register_number', function(req, res){
+    console.log(req.body.data);
+    res.send();
+})
+
 // app.post()
 // app.push()
 // app.delete();
@@ -48,8 +53,10 @@ app.get('/api/villages', handle.getVillages);
 
 // app.get('/api/diseases', handle.getDiseases);
 app.get('/api/diseases', handle.getDiseasesByQuery);
+app.get('/api/diseases/:villageId', handle.getDiseasesByVillage);
 app.get('/api/phoneNumbers', handle.getPhoneNumbers);
-app.get('/api/villages/:phoneNumber', handle.getVillageByPhoneNumber);
+app.get('/api/villages/:villageId', handle.getVillageById);
+app.get('/api/villages/phoneNumber/:phoneNumber', handle.getVillageByPhoneNumber);
 app.listen(3000);
 
 
@@ -93,13 +100,6 @@ var total_messages = [0,0];
 setInterval ( check_sms, 1000, '12247721893', 0 );
 setInterval ( check_sms, 1000, '14502350575', 1);
 
-
-
-
-
-
-
-
 //
 var response = {
     send : function(blah){
@@ -118,14 +118,14 @@ var response = {
             'number' : '14502350575',
             'administrator' : 'Vishal Mathur',
             'name' : 'village 2',
-            'latitude' :2,
+            'latitude' : 2,
             'longitude' : 2
         });
         phoneNumbers.push({
             'number' : '16478651425',
             'administrator' : 'Yannick Ngana',
             'name' : 'village 3',
-            'latitude' :3,
+            'latitude' : 3,
             'longitude' : 3
         });
         console.log('hello')

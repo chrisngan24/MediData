@@ -72,7 +72,7 @@ function check_sms(number, i) {
                     }
                     handle.pushTextMsg(textMessage, function(){
                         console.log('messaged pushed');
-                        send_sms(number,'AYE AYE CAP\'N!')
+                        // send_sms(number,'AYE AYE CAP\'N!')
                     })
                 }
                 

@@ -50,7 +50,7 @@ function drawChart(villages){
  			queryString+= '+';
  	}
 
- 	
+ 	var max =0;
 
 	var plotData = {
 		dates : [],
@@ -89,7 +89,8 @@ function drawChart(villages){
 				}
 				if(i %checkedVillages.length ==0)
 					plotData.dates.push(new Date(vs[i].time).getDate());
-				
+				if(vs[i].count > max)
+					max = vs[i].count;
 			}	
 
 			debugger;
@@ -121,10 +122,20 @@ function drawChart(villages){
 
 		var lineChartOptions = {
 			scaleOverride : true,
-			scaleSteps : 20,
+			scaleSteps : 20, 
 			scaleStepWidth : 1,
-			scaleStartValue : 0
+			scaleStartValue : 0,
+			// scaleShowValues : false,
+			scaleFontSize :0
+			// hAxis: { 
+			// 	textPosition:'none'
+				
+			// }	
 		};
+
+		
+
+
 
 		new Chart(ctx).Line(data, lineChartOptions);
 	}

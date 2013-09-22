@@ -1,8 +1,18 @@
+var gVillage;
 $(document).ready(function(){	
-	// $.ajax({
-	// 	type: 'GET',
+	// gVillage = village;
+	debugger;
+	var id = (location.hash);
 
-	// });
+	$.ajax({
+		type: 'GET',
+		url: 'http://localhost:3000/api/villages/' + id.substring(1),
+		success: function(data){
+			gVillage = data;
+		}
+	});
+
+	
 
 	var plotData = {
 		dates : [],

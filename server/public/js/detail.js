@@ -142,6 +142,8 @@ function drawLineChart(village){
 		success: function(data) {
 			vs = data;
 
+			var dateCounter = 0;
+
 			for (var i in vs) {
 				
 				var disease = vs[i].disease;
@@ -153,8 +155,9 @@ function drawLineChart(village){
 				}
 				else if (disease === "Smallpox") {
 					plotData.data[2].push(vs[i].count);
-					plotData.dates.push((new Date(vs[i].time)).getUTCMilliseconds().toString());
-					//plotData.dates.push(new Date(vs[i].time));
+					//plotData.dates.push((new Date(vs[i].time)).getUTCMilliseconds().toString());
+					dateCounter++;
+					plotData.dates.push(dateCounter.toString());
 				}
 
 			}	
@@ -192,8 +195,8 @@ function drawLineChart(village){
 
 		var lineChartOptions = {
 			scaleOverride : true,
-			scaleSteps : 20,
-			scaleStepWidth : 1,
+			scaleSteps : 15,
+			scaleStepWidth : 6,
 			scaleStartValue : 0
 		};
 

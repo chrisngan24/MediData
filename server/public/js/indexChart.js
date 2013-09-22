@@ -78,7 +78,7 @@ function drawChart(villages){
 				
 			}
 
-
+			var dateCounter = 0;
 
 			for (var i in vs) {			
 				for (var j = 0; j < checkedVillages.length;j++){
@@ -88,12 +88,13 @@ function drawChart(villages){
 					}
 				}
 				if(i %checkedVillages.length ==0)
-					plotData.dates.push(new Date(vs[i].time).getDate());
+					//plotData.dates.push(new Date(vs[i].time).getDate());
+					dateCounter++;
+					plotData.dates.push(dateCounter.toString());
 				if(vs[i].count > max)
 					max = vs[i].count;
 			}	
 
-			debugger;
 			render();
 		}
 	})
@@ -122,21 +123,17 @@ function drawChart(villages){
 
 		var lineChartOptions = {
 			scaleOverride : true,
-			scaleSteps : 20, 
-			scaleStepWidth : 1,
+			scaleSteps : 15, 
+			scaleStepWidth : 6,
 			scaleStartValue : 0,
 			// scaleShowValues : false,
-			scaleFontSize :0
+			scaleFontSize : 10
 			// hAxis: { 
 			// 	textPosition:'none'
 				
 			// }	
 		};
-
 		
-
-
-
 		new Chart(ctx).Line(data, lineChartOptions);
 	}
 

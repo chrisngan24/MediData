@@ -58,7 +58,7 @@ function check_sms(number, i) {
         }, function (err, responseData) {
             if(responseData.smsMessages!= null){
 
-                if (total_m essages[i] == 0) {
+                if (total_messages[i] == 0) {
                     total_messages[i] = responseData.smsMessages.length;    
                 }
 
@@ -70,10 +70,13 @@ function check_sms(number, i) {
                         message : responseData.smsMessages[0].body,
                         phoneNumber : number
                     }
-                    handle.pushTextMsg(textMessage, function(){
-                        console.log('messaged pushed');
-                        // send_sms(number,'AYE AYE CAP\'N!')
-                    })
+                    if(!util.checkText(textMessage.message))
+                        send_sms(number,'Error in message. Please try again.')
+                    else
+                        handle.pushTextMsg(textMessage, function(){
+                            console.log('messaged pushed');
+                            send_sms(number,'Message successfully sent')
+                        })
                 }
                 
             }

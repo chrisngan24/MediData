@@ -44,6 +44,15 @@ exports.parseTextMsg = function(textmessage, village){
 
 };
 
+exports.checkText = function(text){
+	var n = text.split(",");
+	
+	if (n.length!=3)
+		return false;
+	else
+		return true;
+}
+
 function s4() {
   return Math.floor((1 + Math.random()) * 0x10000)
              .toString(16)

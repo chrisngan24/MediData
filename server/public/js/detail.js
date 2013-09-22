@@ -38,11 +38,15 @@ function updateStats(village){
 				break;
 		}
 		$(elId).text(village.diseases[i].count);
-		percentage = Math.round(village.diseases[i].count/village.population * 10000 )/10000
+		percentage = Math.round(village.diseases[i].count/village.population * 1000000 )/10000
 		$(elpercent).text(percentage + '%');
 		if (percentage > 1) {
 			$("#village_status").text("Village Status: DANGER")
 			$("#village_status").css("color","red")
+		}
+		else if (percentage > 0.5) {
+			$("#village_status").text("Village Status: WARNING")
+			$("#village_status").css("color","orange")
 		}
 		else {
 			$("#village_status").text("Village Status: SAFE")
@@ -122,7 +126,7 @@ function renderPie(dataSet){
 			}	
       ]
 
-		new Chart(ctx).Pie(data, {});
+		new Chart(ctx).Doughnut(data, {});
 }
 function drawLineChart(village){
 

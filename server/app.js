@@ -99,14 +99,14 @@ var response = {
             'number' : '12247721893',
             'administrator' : 'Kishan Dedakia',
             'name' : 'Tagi',
-            'population' : 830
+            'population' : 11200
         });
         //console.log(phoneNumbers);
         phoneNumbers.push({
             'number' : '14502350575',
             'administrator' : 'Vishal Mathur',
             'name' : 'Pagong',
-            'population' : 1120
+            'population' : 3150
         });
         phoneNumbers.push({
             'number' : '16478651425',

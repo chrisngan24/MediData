@@ -35,7 +35,7 @@
                 </div>
 
 				<div class="row-fluid">
-					<div class="span8">
+					<div class="span6">
 						<div class="hero-unit">
 							<div class="row-fluid currentStats">
 								<div class="span4">
@@ -54,12 +54,15 @@
 									<h5 title="% of Population Affected" id="sCurrentPercentage">-1%</h5>
 								</div>
 							</div>
+							<div class="row-fluid" style="text-align:center;">
+								<div id="village_population"></div>
+								<div id="village_status"></div>
+							</div>
 						</div>
 					</div>
-					<div class="span4">
-						<div class="hero-unit">
-							<div id="village_population"></div>
-							<div id="village_status"></div>
+					<div class="span6">
+						<div class="hero-unit" style="padding-bottom: 80px;">
+							<canvas id="healthPieChart" width="200" height="200"></canvas>
 						</div>
 					</div>
 				</div>
@@ -67,6 +70,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="hero-unit">
+							<h1 style="text-align:center;">Number of Infections vs. Time</h1>
 							<canvas id="myChart" width="1100" height="350"></canvas>
 							<form id="graphingSelection">
 					            <div id="diseaseCheckBoxes"></div>
@@ -80,23 +84,10 @@
 					</div>
 				</div>
 
-				<div class="row-fluid">
-					<div class="span12">
-						<div class="hero-unit">
-							<canvas id="healthPieChart" width="200" height="200"></canvas>
-						</div>
-					</div>
-				</div>
-				
-				
-
-            </div>
-
-				
+            </div>				
 						
 		</div>
 				
-
 	</body>
 
 </html>

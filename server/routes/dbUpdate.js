@@ -9,7 +9,7 @@ exports.updateVillage = function(village, diseases, callback){
 			// cursor.sort(function(err, cur){
 			// 	cur.toArray(function(err, array){
 					//TO FIX
-					village['diseases'] = [diseases];
+					village['diseases'] = diseases;
 					dbConfig.connectVillage(function(villageColl){
 						console.log('updated village');
 						villageColl.update(

@@ -8,7 +8,6 @@ var app = express();
 //twilio variables
 var client = new twilio.RestClient('AC6ccc5ad275f60124a022af13ae9d4773', 'ca5dfff962e288351dca2103705ebbda');
 
-
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -48,7 +47,6 @@ app.post('/api/register_number', function(req, res){
 
 
 // The main caller to the api URL
-
 app.get('/api/villages', handle.getVillages);
 
 // app.get('/api/diseases', handle.getDiseases);
@@ -57,6 +55,10 @@ app.get('/api/diseases/:villageId', handle.getDiseasesByVillage);
 app.get('/api/phoneNumbers', handle.getPhoneNumbers);
 app.get('/api/villages/:villageId', handle.getVillageById);
 app.get('/api/villages/phoneNumber/:phoneNumber', handle.getVillageByPhoneNumber);
+
+// Code for updating the disease info
+// app.push('/api/villages/update', handle.updateVillageDiseases);
+
 app.listen(3000);
 
 
@@ -70,8 +72,7 @@ function check_sms(number, i) {
             if(responseData.smsMessages!= null){
 
                 if (total_messages[i] == 0) {
-                    total_messages[i] = responseData.smsMessages.length;
-                    
+                    total_messages[i] = responseData.smsMessages.length;    
                 }
 
                 if (total_messages[i] != responseData.smsMessages.length) {
@@ -160,8 +161,8 @@ var generateTextMessages = function(){
     // x is a number by which the traits are randomized
     var generateTextMsg = function(x) {
 
-        textcode = DISEASE_TYPES[(x + 4) % 3] + ':' + x + ',' + DISEASE_TYPES[(x + 2) % 3]  + ':' + (x+2);
-        // console.log(textcode);
+        textcode = DISEASE_TYPES[0] + ':' + x + ',' + DISEASE_TYPES[1]  + ':' + (x+2) + "," + DISEASE_TYPES[2]  + ':' + (x+1);
+        console.log(textcode);
 
         var textMsg = {
             'message' : textcode,

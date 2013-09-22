@@ -30,7 +30,7 @@ exports.getDiseasesByQuery = function(query, callback){
 					callback(array);
 				});
 			}
-		)
+		);
 	});
 }
 

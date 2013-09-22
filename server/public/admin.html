@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
 		
 		
@@ -37,82 +37,46 @@
 
 		</script>
 
+		<style type='text/css'>
+		
+		.admin {
+			width: 400px;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: white;
+			border-radius: 10px;
+			text-align:center;
+			padding:50px 0px;
+		}
+		</style>
+
 	</head>
 
 	<body>
-
-		<form class="form-horizontal">
-		<fieldset>
-
-		<!-- Form Name -->
-		<legend>Registration</legend>
-
-		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="textinput">Phone number</label>
-		  <div class="controls">
-		    <input id="phone_number" name="textinput" type="text" placeholder="" class="input-xlarge">
-		  </div>
+		<div class="container">
+			<div class='navbar navbar-inverse' style='padding-left:20px;padding-right:20px;'>
+	          <div class='navbar-inner nav-collapse' style="height: auto;">
+	            <ul class="nav">
+	              <li class="active"><a href="/index.html">Home</a></li>
+	              <li><a href="/admin.html">Register Phone</a></li>
+	            </ul>
+	          </div>
+	        </div>
+	        
+			<h1 style="color: white;text-align: center;">Phone Registration</h1>
+			<div class="admin" color:#ffffff;>	        	
+			        <label>Phone Number</label><input id="phone_number" type='text'></input>
+			        <label>Name</label><input id="admin_name" type='text'></input>
+					<label>Village Name</label><input id='village_name' type='text'></input>
+					<label>Location</label><input id='village_location' type='text'></input>
+					<label>Latitude</label><input id='lat' type='text'></input>
+					<label>Longitude</label><input id='long' type='text'></input>
+					<br/><br/>
+			        <button class="btn btn-primary" id='register_num'>Register</button>
+		        </div>
+		        
+		    </div>
 		</div>
-
-		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="textinput">Admin name</label>
-		  <div class="controls">
-		    <input id="admin_name" name="textinput" type="text" placeholder="" class="input-xlarge">
-		  </div>
-		</div>
-
-		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="textinput">Village name</label>
-		  <div class="controls">
-		    <input id="village_name" name="textinput" type="text" placeholder="" class="input-xlarge">
-		  </div>
-		</div>
-
-		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="textinput">Location</label>
-		  <div class="controls">
-		    <input id="village_location" name="textinput" type="text" placeholder="" class="input-xlarge">
-		  </div>
-		</div>
-
-		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="textinput">Latitude</label>
-		  <div class="controls">
-		    <input id="lat" name="textinput" type="text" placeholder="" class="input-xlarge">
-		  </div>
-		</div>
-
-		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="textinput">Longitude</label>
-		  <div class="controls">
-		    <input id="long" name="textinput" type="text" placeholder="" class="input-xlarge">
-		  </div>
-		</div>
-
-		<!-- Button -->
-		<div class="control-group">
-		  <label class="control-label" for="singlebutton"></label>
-		  <div class="controls">
-		    <button id="register_num" name="singlebutton" class="btn btn-primary">Register</button>
-		  </div>
-		</div>
-
-		</fieldset>
-
-		</form>
-        <!--<label>Phone Number</label><input id="phone_number" type='text'></input>
-        <label>Name</label><input id="admin_name" type='text'></input>
-		<label>Village Name</label><input id='village_name' type='text'></input>
-		<label>Location</label><input id='village_location' type='text'></input>
-		<label>Latitude</label><input id='lat' type='text'></input>
-		<label>Longitude</label><input id='long' type='text'></input>
-        <button id='register_num'>Register</button>-->
 	</body>
 
 </html>

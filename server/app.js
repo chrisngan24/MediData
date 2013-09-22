@@ -58,7 +58,7 @@ function check_sms(number, i) {
         }, function (err, responseData) {
             if(responseData.smsMessages!= null){
 
-                if (total_messages[i] == 0) {
+                if (total_m essages[i] == 0) {
                     total_messages[i] = responseData.smsMessages.length;    
                 }
 
@@ -99,14 +99,14 @@ var response = {
             'number' : '12247721893',
             'administrator' : 'Kishan Dedakia',
             'name' : 'Tagi',
-            'population' : 11200
+            'population' : 830
         });
         //console.log(phoneNumbers);
         phoneNumbers.push({
             'number' : '14502350575',
             'administrator' : 'Vishal Mathur',
             'name' : 'Pagong',
-            'population' : 3150
+            'population' : 1120
         });
         phoneNumbers.push({
             'number' : '16478651425',
@@ -146,7 +146,7 @@ var generateTextMessages = function(){
     var generateTextMsg = function(x) {
 
         var generateRandom = function(){
-            return Math.floor(Math.random() * (20 - 5) + 50);
+            return Math.floor(Math.random() * (20 - 5) + 5);
         }
 
         // textcode = DISEASE_TYPES[0] + ':' + x + ',' + DISEASE_TYPES[1]  + ':' + (x+2) + "," + DISEASE_TYPES[2]  + ':' + (x+1);

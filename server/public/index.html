@@ -60,7 +60,7 @@
         curr_row = $("#first_row")
 
         for (var i in data) {
-          v_block = $("<div class='span4'><h2><a href='http://localhost:3000/detailed/" + data[i]._id + "'>" + data[i].name + "</a></h2><h4>Admin: " + data[i].administrator + "</h4></div>")
+          v_block = $("<div class='span4'><h2><a href='http://localhost:3000/detailed/" + data[i]._id + "'>" + data[i].name + "</a></h2><h2 id='warning" + data[i]._id+"'' style='Visibility:hidden'>Warning</h2><h4>Admin: " + data[i].administrator + "</h4></div>")
           
           
           table = $("<table class='table table-striped'></table>")

@@ -8,6 +8,8 @@ $(document).ready(function(){
 			 +diseases[i]+'</option>');	
 	}
 
+	debugger;
+
 	$.ajax({
 		type: 'GET',
 		url : 'http://localhost:3000/api/villages',
@@ -17,7 +19,16 @@ $(document).ready(function(){
 			for(var i = 0; i < villages.length; i++){
 				$('#villageCheckBoxes').append('<label class="checkbox">'+
 				'<input type="checkbox" class="villageCheckBox">' +villages[i].name+'</input></label>');	
+				for (var j = 0 ; j < villages[i].diseases.length;j++){
+					var percentages= Math.round(villages[i].diseases[j].count/villages[i].population * 1000000 )/10000
+					console.log(percentages);
+					if(percentages>0.5){
+						$('#warning'+villages[i]._id).attr('style', 'visibility:visible;color:#900000;');
+						break;
+					}
+				}
 			}			
+
 
 			drawChart(villages);
 

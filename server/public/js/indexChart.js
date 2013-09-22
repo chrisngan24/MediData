@@ -23,7 +23,7 @@ $(document).ready(function(){
 					var percentages= Math.round(villages[i].diseases[j].count/villages[i].population * 1000000 )/10000
 					console.log(percentages);
 					if(percentages>0.5){
-						$('#warning'+villages[i]._id).attr('style', 'visibility:visible;color:#900000;');
+						$('#warning'+villages[i]._id).removeClass('hidden');
 						break;
 					}
 				}

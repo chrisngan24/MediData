@@ -42,15 +42,18 @@ function updateStats(village){
 		$(elpercent).text(percentage + '%');
 		if (percentage > 1) {
 			$("#village_status").text("Village Status: DANGER")
-			$("#village_status").css("color","red")
+			
+			$("#village_status").addClass('label-important');
 		}
 		else if (percentage > 0.5) {
 			$("#village_status").text("Village Status: WARNING")
-			$("#village_status").css("color","orange")
+			
+			$("#village_status").addClass('label-warning')
 		}
 		else {
 			$("#village_status").text("Village Status: SAFE")
-			$("#village_status").css("color","green")
+			// $("#village_status").css("color","green")
+			$("#village_status").addClass('label-success')
 		}
 	}
 	
@@ -114,7 +117,7 @@ function renderPie(dataSet){
 			},
 			{
 				value : parseInt(dataSet[1], 10),
-				color : "#E0E4CC"
+				color : "#53e885"
 			},
 			{
 				value : parseInt(dataSet[2], 10),

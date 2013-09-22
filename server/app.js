@@ -110,26 +110,22 @@ var response = {
         phoneNumbers.push({
             'number' : '12247721893',
             'administrator' : 'Kishan Dedakia',
-            'name' : 'village 1',
-            'latitude' :1,
-            'longitude' : 1
+            'name' : 'Tagi',
+            'population' : 15000
         });
         console.log(phoneNumbers);
         phoneNumbers.push({
             'number' : '14502350575',
             'administrator' : 'Vishal Mathur',
-            'name' : 'village 2',
-            'latitude' : 2,
-            'longitude' : 2
+            'name' : 'Pagong',
+            'population' : 12000
         });
         phoneNumbers.push({
             'number' : '16478651425',
             'administrator' : 'Yannick Ngana',
-            'name' : 'village 3',
-            'latitude' : 3,
-            'longitude' : 3
+            'name' : 'Rattana',
+            'population' : 7000
         });
-        console.log('hello')
         for (var i = 0; i < phoneNumbers.length; i++){
             var req = {};
             req.body = {};

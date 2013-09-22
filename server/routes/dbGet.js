@@ -11,6 +11,16 @@ exports.getVillages = function(callback){
 	});
 }
 
+exports.getVillageById = function(villageId, callback){
+	dbConfig.connectVillage(function(villageColl){
+		villageColl.find({_id : villageId}, function(err, cursor){
+			cursor.toArray(function(err,array){
+				callback(array[0]);
+			})
+		})
+	})
+}
+
 exports.getDiseasesByQuery = function(query, callback){
 	dbConfig.connectDisease(function(diseaseColl){
 		console.log(query);

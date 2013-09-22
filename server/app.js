@@ -55,7 +55,8 @@ app.get('/api/villages', handle.getVillages);
 app.get('/api/diseases', handle.getDiseasesByQuery);
 app.get('/api/diseases/:villageId', handle.getDiseasesByVillage);
 app.get('/api/phoneNumbers', handle.getPhoneNumbers);
-app.get('/api/villages/:phoneNumber', handle.getVillageByPhoneNumber);
+app.get('/api/villages/:villageId', handle.getVillageById);
+app.get('/api/villages/phoneNumber/:phoneNumber', handle.getVillageByPhoneNumber);
 app.listen(3000);
 
 

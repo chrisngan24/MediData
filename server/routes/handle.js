@@ -64,6 +64,13 @@ exports.deleteAll = function(req, res){
 	});
 }
 
+exports.getVillageById = function(req, res){
+	villageId = req.params.villageId;
+	dbGet.getVillageById(villageId, function(village){
+		res.send(village);
+	})
+}
+
 exports.getDiseasesByQuery = function(req,res){
 	var query = req.query;
 	console.log(query);

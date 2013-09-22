@@ -17,7 +17,25 @@ $(document).ready(function(){
 });
 
 function updateStats(village){
-	$('#village_name').text(village.name);
+	var villageIndex = 0;
+	
+	
+	switch(village.name){
+		case 'Tagi':
+			villageIndex = 0;
+			break;
+		case 'Pagong':
+			villageIndex = 1;
+			break;
+		case 'Rattana':
+			villageIndex = 2;
+			break;
+	}
+	
+
+
+	$('#village_name').append('<image width="100" style="margin-left:1em;margin-right:1em;" height="80"src="images/'+window.flags[villageIndex]+'""></image>');
+	$('#village_name').append(village.name);
 	$("#village_population").text("Village Population: " + village.population)
 	for (var i =0 ; i < village.diseases.length; i++){
 		var elId='';

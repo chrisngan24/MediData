@@ -63,7 +63,7 @@
 
           v_block = $("<div class='span4'><h2><img style='margin-right:0.5em;' width='40' height='40' src='images/"+flagFiles[i] +".png'></img><a href='http://localhost:3000/detailed/" + data[i]._id + "'>" + data[i].name + "</a><span style='margin-left:1em' id='warning" + data[i]._id+"'' class='hidden label label-important'>Warning</span><h4>Admin: " + data[i].administrator + "</h4></div>")
           // <img style='width:20px; height:20px;src:url(\"images/warning.svg\")'></img></h2><h2 id='warning" + data[i]._id+"'' style='Visibility:hidden'>Warning</h2>
-          
+          window.villageOrder.push(data[i]);
           table = $("<table class='table table-striped'></table>")
           table.append("<tr><th>Disease</th><th style='text-align:right;'># People Affected</th></tr>")
 

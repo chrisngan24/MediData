@@ -40,21 +40,22 @@ function updateStats(village){
 		$(elId).text(village.diseases[i].count);
 		percentage = Math.round(village.diseases[i].count/village.population * 1000000 )/10000
 		$(elpercent).text(percentage + '%');
-		if (percentage > 1) {
-			$("#village_status").text("Village Status: DANGER")
-			
-			$("#village_status").addClass('label-important');
-		}
-		else if (percentage > 0.5) {
-			$("#village_status").text("Village Status: WARNING")
-			
-			$("#village_status").addClass('label-warning')
-		}
-		else {
-			$("#village_status").text("Village Status: SAFE")
-			// $("#village_status").css("color","green")
-			$("#village_status").addClass('label-success')
-		}
+		
+	}
+	
+	var avg_percent = (parseFloat($("#sCurrentPercentage").html().replace('%','')) + parseFloat($("#hCurrentPercentage").html().replace('%','')) + parseFloat($("#mCurrentPercentage").html().replace('%','')))/3
+
+	if (avg_percent > 1.0) {
+		$("#village_status").text("Village Status: DANGER")
+		$("#village_status").addClass('label-important');
+	}
+	else if (avg_percent > 0.5) {
+		$("#village_status").text("Village Status: WARNING")
+		$("#village_status").addClass('label-warning')
+	}
+	else {
+		$("#village_status").text("Village Status: SAFE")
+		$("#village_status").addClass('label-success')
 	}
 	
 }

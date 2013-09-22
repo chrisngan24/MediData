@@ -37,8 +37,6 @@ function drawChart(villages){
 		checkedDiseases.push(diseases[i]);
 	})
 
-	debugger;
-
 	var plotData = {
 		dates : [],
 		data:[]

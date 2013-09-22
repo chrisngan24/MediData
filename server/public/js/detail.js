@@ -6,6 +6,9 @@ $(document).ready(function(){
 		url: 'http://localhost:3000/api/villages/' + (location.hash).substring(1),
 		success: function(data){
 			gVillage = data;
+			drawPieChart(data);
+			//renderPie(data);
+
 			drawLineChart(data);
 			updateStats(data);
 		}
@@ -49,6 +52,78 @@ function updateStats(village){
 	
 }
 
+
+function drawPieChart(village){
+
+	var pieData = new Array();
+	var population = village.population;
+
+	console.log(village);
+    
+	pieData[0] = village.diseases[0].count;
+	pieData[1] = village.diseases[1].count;
+	pieData[2] = village.diseases[2].count;
+
+/*
+	vs = []
+
+	$.ajax({
+		type: 'GET',
+		url: 	'http://localhost:3000/api/villages',
+		success: function(data) {
+			vs = data;
+
+			for (i in vs){
+			if((new Date(vs[i].time)=== (new Date())       ))
+			{
+
+				var disease = vs[i].disease;
+				console.log("hello");
+				if (disease === "Malaria") {
+					pieData[0]=vs[i].count;
+				}
+				else if (disease === "HIV") {
+					pieData[1]=vs[i].count;
+				}
+				else if (disease === "Smallpox") {
+					pieData[2]=vs[i].count;
+				}
+			}
+		    }
+		    */
+			pieData[3] = population - pieData[0] - pieData[1] - pieData[2];
+			console.log(pieData);
+			renderPie(pieData);
+
+}
+
+function renderPie(dataSet){
+		$('#healthPieChart').html('');
+		var ctx = $("#healthPieChart").get(0).getContext("2d");
+		//This will get the first returned node in the jQuery collection.
+		var myNewChart = new Chart(ctx);
+		console.log(dataSet)
+		var data = [
+			{
+				value: parseInt(dataSet[0], 10),
+				color: "#F38630"
+			},
+			{
+				value : parseInt(dataSet[1], 10),
+				color : "#E0E4CC"
+			},
+			{
+				value : parseInt(dataSet[2], 10),
+				color : "#69D2E7"
+			},
+			{
+				value : parseInt(dataSet[3], 10),
+				color : "#900000"
+			}	
+      ]
+
+		new Chart(ctx).Pie(data, {});
+}
 function drawLineChart(village){
 
 	var plotData = {

@@ -12,13 +12,24 @@
 					phone_number = $("#phone_number").val()
 					admin_name = $("#admin_name").val()
 					village_name = $("#village_name").val()
-					village_location = $("#village_location").val()
 					population = $("#population").val()
+					
+					console.log("BIG FIX");
+					console.log(phone_number)
+					console.log(admin_name)
+					console.log(village_name)
+					console.log(population)
 					
 					$.ajax({
 						type: 'POST',
-						url: 	'http://localhost:3000/api/register_number',
-						data: {'number':phone_number,'name':admin_name,'village_name':village_name,'location':village_location, 'population':population},
+						url: 	'http://localhost:3000/api/registerNumber',
+						data: { 'phoneNumber':{
+							'number':phone_number,
+							'administrator':admin_name,
+							'name':village_name, 
+							'population':population }
+						},
+
 						success: function(data) {
 							alert('Number sucessfully registered')	
 						}
@@ -53,16 +64,13 @@
 	              <li><a href="/admin.html">Register Phone</a></li>
 	            </ul>
 	          </div>
-	        </div>
-
-			<h1 style="color: white;text-align: center;">Phone Registration</h1>
+	        </div>	        
+			<h1 style="color: white;text-align: center;">Registration</h1>
 			<div class="admin" color:#ffffff;>	        	
 			        <label>Phone Number</label><input id="phone_number" type='text'></input>
-			        <label>Administrator Name</label><input id="admin_name" type='text'></input>
-					<label>Village</label><input id='village_name' type='text'></input>
-					<label>Location</label><input id='village_location' type='text'></input>
+			        <label>Name</label><input id="admin_name" type='text'></input>
+					<label>Village Name</label><input id='village_name' type='text'></input>
 					<label>Population</label><input id='population' type='text'></input>
-					<br/><br/>
 			        <button class="btn btn-primary" id='register_num'>Register</button>
 		        </div>
 		        

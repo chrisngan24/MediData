@@ -67,7 +67,6 @@ exports.pushPhoneNumberWithVillage = function(village, phoneNumber, callback){
 	});
 	
 }
-
  
 exports.pushDisease = function(disease, callback){
 	dbConfig.connectDisease(function(diseaseColl){
@@ -75,7 +74,7 @@ exports.pushDisease = function(disease, callback){
 	});
 };
 
-
+// Accepts a JSON object and writes to DB
 exports.pushVillage = function(village, callback){
 	dbConfig.connectVillage(function(villageColl){
 		villageColl.insert(village, callback);

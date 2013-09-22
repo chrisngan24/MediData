@@ -32,19 +32,11 @@ app.get('/admin', function(req, res){
     res.redirect('/admin.html');
 });
 app.get('/detailed/:villageId', function(req, res){
-    console.log(req.params);
+    //console.log(req.params);
     res.redirect('/detailed.html#' + req.params.villageId);
 });
 
-app.post('/api/register_number', function(req, res){
-    console.log(req.body.data);
-    res.send();
-})
-
-// app.post()
-// app.push()
-// app.delete();
-
+app.post('/api/registerNumber', handle.registerNumber);
 
 // The main caller to the api URL
 app.get('/api/villages', handle.getVillages);
@@ -56,12 +48,7 @@ app.get('/api/phoneNumbers', handle.getPhoneNumbers);
 app.get('/api/villages/:villageId', handle.getVillageById);
 app.get('/api/villages/phoneNumber/:phoneNumber', handle.getVillageByPhoneNumber);
 
-// Code for updating the disease info
-// app.push('/api/villages/update', handle.updateVillageDiseases);
-
 app.listen(3000);
-
-
 
 function check_sms(number, i) {
     try{
@@ -104,7 +91,7 @@ setInterval ( check_sms, 1000, '14502350575', 1);
 //
 var response = {
     send : function(blah){
-        console.log('DeleteAll');
+        //console.log('DeleteAll');
         var phoneNumbers = [];
         
         phoneNumbers.push({
@@ -113,7 +100,7 @@ var response = {
             'name' : 'Tagi',
             'population' : 15000
         });
-        console.log(phoneNumbers);
+        //console.log(phoneNumbers);
         phoneNumbers.push({
             'number' : '14502350575',
             'administrator' : 'Vishal Mathur',
@@ -158,7 +145,7 @@ var generateTextMessages = function(){
     var generateTextMsg = function(x) {
 
         textcode = DISEASE_TYPES[0] + ':' + x + ',' + DISEASE_TYPES[1]  + ':' + (x+2) + "," + DISEASE_TYPES[2]  + ':' + (x+1);
-        console.log(textcode);
+        //console.log(textcode);
 
         var textMsg = {
             'message' : textcode,

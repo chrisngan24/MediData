@@ -8,8 +8,6 @@ $(document).ready(function(){
 			 +diseases[i]+'</option>');	
 	}
 
-	debugger;
-
 	$.ajax({
 		type: 'GET',
 		url : 'http://localhost:3000/api/villages',

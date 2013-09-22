@@ -164,7 +164,7 @@ function drawLineChart(village){
 
 	$.ajax({
 		type: 'GET',
-		url: 	'http://localhost:3000/api/diseases',
+		url: 	'http://localhost:3000/api/diseases/' + village._id,
 		success: function(data) {
 			vs = data;
 

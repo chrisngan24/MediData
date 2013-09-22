@@ -34,7 +34,7 @@ function updateStats(village){
 	
 
 
-	$('#village_name').append('<image width="100" style="margin-left:1em;margin-right:1em;" height="80"src="images/'+window.flags[villageIndex]+'""></image>');
+	$('#village_name').append('<image width="100" style="margin-right:0.5em;" height="80"src="images/'+window.flags[villageIndex]+'""></image>');
 	$('#village_name').append(village.name);
 	$("#village_population").text("Village Population: " + village.population)
 	for (var i =0 ; i < village.diseases.length; i++){

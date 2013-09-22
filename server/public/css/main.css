@@ -11,12 +11,20 @@ body {
 .filters select {
   padding: 5px;
 }
-.icon {
+.logo {
   height: 60px;
   float: left;
+  padding-right: 15px;
+}
+.icon {
+  height: 60px;
+  float: right;
   padding-right: 15px;
 }
 .c-icon {
   height: 140px;
   padding-top: 10px;
+}
+.hidden {
+  visibility: hidden;
 }

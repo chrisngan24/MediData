@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TextTemplate</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string-array name="disease_array">
+        <item>Malaria</item>
+        <item>HIV</item>
+        <item>Small Pox</item>
+    </string-array>
+
+</resources>

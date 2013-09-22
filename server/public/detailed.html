@@ -2,9 +2,9 @@
 
 	<head>
 		<script src="libs/Chart.js"></script>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+		<script type="text/javascript" src="libs/jquery-latest.pack.js"></script>
 		<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<link rel="stylesheet" type="text/css" href="css/detailed.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
 
 		<script src="js/detail.js">
 		</script>
@@ -16,24 +16,48 @@
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="page-header">
-  						<h1 id="detailTitle">Example page header <small id="detailSubtitle">Subtext for header</small></h1>
+  						<h1 id="detailTitle">Example page header</h1>
 					</div>
 				</div>
 			</div>
 			<div class="row-fluid">
 				<div class="span7">
 					<div class="hero-unit">
-						<div class="row-fluid">							
-							<div class="span3">
+						<div class="row-fluid currentStats">							
+							<div class="span4">
+								<h2>Malaria</h2>
+								<h1 id="mCurrent">23</h1>
+								<h2 id="mCurrentPercentage">45%</h2>
 							</div>
-							<div class="span3">
+							<div class="span4">
+								<h2>HIV</h2>
+								<h1 id="hCurrent">23</h1>
+								<h2 id="hCurrentPercentage">45%</h2>
 							</div>
-							<div class="span3">
+							<div class="span4">
+								<h2>Smallpox</h2>
+								<h1 id="sCurrent">23</h1>
+								<h2 id="scurrentPercentage">45%</h2>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="span5">
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="hero-unit">
+								Village is healthy
+							</div>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span10">
+							<canvas id="healthPieChart" width="200" height="200"></canvas>
+						</div>
+						<div class="span2">
+							<div class="hero-unit"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row-fluid">
@@ -50,13 +74,9 @@
 			    </form>	
 				</div>
 			</div>	
-			
-			<div>
-				
-			</div>
+						
 		</div>
-		
-		
+				
 
 	</body>
 

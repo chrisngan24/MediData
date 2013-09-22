@@ -1,5 +1,9 @@
 $(document).ready(function(){	
-	
+	// $.ajax({
+	// 	type: 'GET',
+
+	// });
+
 	var plotData = {
 		dates : [],
 		data:[[],[],[]]

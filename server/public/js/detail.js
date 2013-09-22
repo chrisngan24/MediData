@@ -1,12 +1,9 @@
 var gVillage;
 $(document).ready(function(){	
-	// gVillage = village;
-	debugger;
-	var id = (location.hash);
 
 	$.ajax({
 		type: 'GET',
-		url: 'http://localhost:3000/api/villages/' + id.substring(1),
+		url: 'http://localhost:3000/api/villages/' + (location.hash).substring(1),
 		success: function(data){
 			gVillage = data;
 			drawLineChart(data);
@@ -17,21 +14,37 @@ $(document).ready(function(){
 });
 
 function updateStats(village){
-	$('#detailTitle').text(village.name);	
+	$('#village_name').text(village.name);
+	$("#village_population").text("Village Population: " + village.population)
 	for (var i =0 ; i < village.diseases.length; i++){
 		var elId='';
+		var elpercent='';
+
 		switch(village.diseases[i].disease){
 			case 'Malaria':
 				elId = '#mCurrent';
+				elpercent = '#mCurrentPercentage'
 				break;
 			case 'HIV':
 				elId = '#hCurrent';
+				elpercent = '#hCurrentPercentage'
 				break;
 			case 'Smallpox':
 				elId = '#sCurrent';
+				elpercent = '#sCurrentPercentage'
 				break;
 		}
 		$(elId).text(village.diseases[i].count);
+		percentage = Math.round(village.diseases[i].count/village.population * 10000 )/10000
+		$(elpercent).text(percentage + '%');
+		if (percentage > 1) {
+			$("#village_status").text("Village Status: DANGER")
+			$("#village_status").css("color","red")
+		}
+		else {
+			$("#village_status").text("Village Status: SAFE")
+			$("#village_status").css("color","green")
+		}
 	}
 	
 }
@@ -53,7 +66,7 @@ function drawLineChart(village){
 		url: 	'http://localhost:3000/api/diseases',
 		success: function(data) {
 			vs = data;
-			
+
 			for (var i in vs) {
 				
 				var disease = vs[i].disease;
